@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.epicodus.blake.bombdefuser.R;
@@ -27,7 +28,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Bind(R.id.emailEditText) EditText mEmailEditText;
     @Bind(R.id.passwordEditText) EditText mPasswordEditText;
     @Bind(R.id.signInButton) Button mSignInButton;
-    @Bind(R.id.createAccountButton) Button mCreateAccountButton;
+    @Bind(R.id.createAccountTextView) TextView mCreateAccountTextView;
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
@@ -40,7 +41,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         ButterKnife.bind(this);
         mSignInButton.setOnClickListener(this);
-        mCreateAccountButton.setOnClickListener(this);
+        mCreateAccountTextView.setOnClickListener(this);
     }
 
     @Override
@@ -48,8 +49,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         if (v == mSignInButton) {
             loginWithPassword();
         }
-        if (v == mCreateAccountButton) {
+        if (v == mCreateAccountTextView) {
             Intent intent = new Intent(LoginActivity.this, CreateAccountActivity.class);
+            startActivity(intent);
+            finish();
         }
     }
 
