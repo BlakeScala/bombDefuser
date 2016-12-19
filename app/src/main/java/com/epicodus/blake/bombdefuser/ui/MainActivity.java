@@ -39,6 +39,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void startGame() {
         Intent intent = new Intent(MainActivity.this, GameActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     public void logout() {
