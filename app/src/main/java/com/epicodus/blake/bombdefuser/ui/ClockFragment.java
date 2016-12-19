@@ -51,18 +51,25 @@ public class ClockFragment extends Fragment {
                              Bundle savedInstanceState) {
         TextView textView = new TextView(getActivity());
         View view = inflater.inflate(R.layout.fragment_clock, container, false);
+
+
         ButterKnife.bind(this, view);
 
         CountDownTimer timer = new CountDownTimer(180000, 1000) {
             @Override
             public void onTick(long timeLeft) {
+                long millis = timeLeft;
+                String hms = String.format("%02d:%02d",
+                        java.util.concurrent.TimeUnit.MILLISECONDS.toMinutes(millis) - java.util.concurrent.TimeUnit.HOURS.toMinutes(java.util.concurrent.TimeUnit.MILLISECONDS.toHours(millis)),
+                        java.util.concurrent.TimeUnit.MILLISECONDS.toSeconds(millis) - java.util.concurrent.TimeUnit.MINUTES.toSeconds(java.util.concurrent.TimeUnit.MILLISECONDS.toMinutes(millis))
+                );
                 String timeLeftString = String.valueOf((timeLeft/1000));
-                mClockTimerView.setText(timeLeftString);
+                mClockTimerView.setText(hms);
             }
 
             @Override
             public void onFinish() {
-                mClockTimerView.setText("Goodbye!");
+                // Take to loser's page!
             }
         };
         timer.start();
