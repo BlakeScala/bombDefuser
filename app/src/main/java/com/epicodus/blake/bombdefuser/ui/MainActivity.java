@@ -37,7 +37,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    public void startGame() {}
+    public void startGame() {
+        Intent intent = new Intent(MainActivity.this, GameActivity.class);
+    }
 
     public void logout() {
         FirebaseAuth.getInstance().signOut();
