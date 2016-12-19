@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "914658944147",
+    "firebase_url": "https://bombdefuser-92dee.firebaseio.com",
+    "project_id": "bombdefuser-92dee",
+    "storage_bucket": "bombdefuser-92dee.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:914658944147:android:f716fad4e5e9b7a9",
+        "android_client_info": {
+          "package_name": "com.epicodus.blake.bombdefuser"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "914658944147-i10sfp9nlfs233v7j21o22gj5okvtgu4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.epicodus.blake.bombdefuser",
+            "certificate_hash": "5E1B7AB614223CF96E44CA5EE01810D905637880"
+          }
+        },
+        {
+          "client_id": "914658944147-cc6dcugnnaonjo98fsvcq3mhj7qjoqki.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxYquPT6iE4aP7iY0DspO41XgUvOxd7qA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "914658944147-cc6dcugnnaonjo98fsvcq3mhj7qjoqki.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
