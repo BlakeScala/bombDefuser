@@ -4,4 +4,20 @@
     android:layout_height="match_parent"
     android:background="@color/brightBlue">
 
+    <ImageView
+        android:layout_width="537dp"
+        android:layout_height="94dp"
+        android:id="@+id/mainTitle"
+        android:src="@drawable/title"
+        android:layout_weight="0.04"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <fragment
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:name="com.epicodus.blake.bombdefuser.ui.ClockFragment"
+        android:id="@+id/clockFragment">
+    </fragment>
+
 </RelativeLayout>
