@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/brightBlue">
@@ -13,11 +14,22 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
-    <fragment
+    <Button
+        style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:name="com.epicodus.blake.bombdefuser.ui.ClockFragment"
-        android:id="@+id/clockFragment">
-    </fragment>
+        android:text="Log Out"
+        android:id="@+id/logOutButton"
+        android:layout_below="@+id/startButton"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start Game"
+        android:id="@+id/startButton"
+        android:layout_below="@+id/mainTitle"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp" />
 
 </RelativeLayout>
