@@ -21,6 +21,10 @@
             android:name=".ui.CreateAccountActivity"
             android:screenOrientation="landscape">
         </activity>
+        <activity
+            android:name=".ui.MainActivity"
+            android:screenOrientation="landscape">
+        </activity>
     </application>
 
 </manifest>
