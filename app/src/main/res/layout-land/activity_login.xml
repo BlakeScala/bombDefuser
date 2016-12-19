@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="94dp"
         android:id="@+id/mainTitle"
-        android:src="@drawable/bombDefuser"
+        android:src="@drawable/title"
         android:layout_weight="0.04" />
 
 
