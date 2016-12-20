@@ -12,25 +12,28 @@ import java.util.List;
 
 public class Switch {
     private String currentColor;
-    private int currentLevel;
+    private int index;
     private int timesClicked = 0;
 
-
-    public Switch(String currentColor){
+    public Switch(int index, String currentColor){
+        this.index = index;
         this.currentColor = currentColor;
+    }
+
+    public String getCurrentColor() {
+        return currentColor;
     }
 
     public void setCurrentColor(String color) {
         this.currentColor = color;
     }
 
-    public int getCurrentLevel() {
-        return this.currentLevel;
-    }
-
     public int getTimesClicked() {
         return this.timesClicked;
     }
 
+    public int getIndex() {
+        return index;
+    }
 
 }

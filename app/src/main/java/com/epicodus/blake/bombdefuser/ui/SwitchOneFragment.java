@@ -29,6 +29,15 @@ public class SwitchOneFragment extends Fragment implements View.OnClickListener 
     @Bind(R.id.switchFour) ImageView blockFour;
     @Bind(R.id.switchFive) ImageView blockFive;
 
+    Switch switchOne = new Switch(0, levelOneColors.get(0));
+    Switch switchTwo = new Switch(1, levelOneColors.get(0));
+    Switch switchThree = new Switch(2, levelOneColors.get(0));
+    Switch switchFour = new Switch(3, levelOneColors.get(0));
+    Switch switchFive = new Switch(4, levelOneColors.get(0));
+    List<Switch> levelOneSwitches = Arrays.asList(switchOne, switchTwo, switchThree, switchFour, switchFive);
+
+    SwitchLevel switchPuzzleOne = new SwitchLevel(1, levelOneSwitches);
+
     public SwitchOneFragment() {
         // Required empty public constructor
     }
@@ -39,34 +48,27 @@ public class SwitchOneFragment extends Fragment implements View.OnClickListener 
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        Switch switchOne = new Switch(levelOneColors.get(0));
-        Switch switchTwo = new Switch(levelOneColors.get(0));
-        Switch switchThree = new Switch(levelOneColors.get(0));
-        Switch switchFour = new Switch(levelOneColors.get(0));
-        Switch switchFive = new Switch(levelOneColors.get(0));
-        List<Switch> levelOneSwitches = Arrays.asList(switchOne, switchTwo, switchThree, switchFour, switchFive);
-
-        SwitchLevel switchPuzzleOne = new SwitchLevel(1, levelOneSwitches);
-
         return inflater.inflate(R.layout.fragment_switch_one, container, false);
     }
 
     public void onClick(View v) {
         if (v == blockOne) {
-
+            switchPuzzleOne.clickSwitch(levelOneSwitches.get(0));
         }
         if (v == blockTwo) {
-
+            switchPuzzleOne.clickSwitch(levelOneSwitches.get(1));
         }
         if (v == blockThree) {
-
+            switchPuzzleOne.clickSwitch(levelOneSwitches.get(2));
         }
         if (v == blockFour) {
-
+            switchPuzzleOne.clickSwitch(levelOneSwitches.get(3));
         }
         if (v == blockFive) {
-
+            switchPuzzleOne.clickSwitch(levelOneSwitches.get(4));
         }
     }
-
 }
+
+
+

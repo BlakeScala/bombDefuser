@@ -42,53 +42,11 @@ public class SwitchLevel {
 
     public void clickSwitch(Switch clickedSwitch) {
         if (this.getLevel() == 1) {
-
+            if
         } else if (this.getLevel() == 2) {
 
         } else if (this.getLevel() == 3) {
 
         }
     }
-
-    public void clickSwitchTwo() {
-        if (this.getLevel() == 1) {
-
-        } else if (this.getLevel() == 2) {
-
-        } else if (this.getLevel() == 3) {
-
-        }
-    }
-
-    public void clickSwitchThree() {
-        if (this.getLevel() == 1) {
-
-        } else if (this.getLevel() == 2) {
-
-        } else if (this.getLevel() == 3) {
-
-        }
-    }
-
-    public void clickSwitchFour() {
-        if (this.getLevel() == 1) {
-
-        } else if (this.getLevel() == 2) {
-
-        } else if (this.getLevel() == 3) {
-
-        }
-    }
-
-    public void clickSwitchFive() {
-        if (this.getLevel() == 1) {
-
-        } else if (this.getLevel() == 2) {
-
-        } else if (this.getLevel() == 3) {
-
-        }
-    }
-
-
 }
