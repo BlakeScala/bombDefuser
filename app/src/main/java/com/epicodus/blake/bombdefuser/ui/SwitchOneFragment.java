@@ -78,25 +78,21 @@ public class SwitchOneFragment extends Fragment implements View.OnClickListener 
     }
 
     public void onClick(View v) {
+        totalClicks++;
         if (v == blockOne) {
             clickSwitch(switchOne);
-            totalClicks++;
         }
         if (v == blockTwo) {
             clickSwitch(switchTwo);
-            totalClicks++;
         }
         if (v == blockThree) {
             clickSwitch(switchThree);
-            totalClicks++;
         }
         if (v == blockFour) {
             clickSwitch(switchFour);
-            totalClicks++;
         }
         if (v == blockFive) {
             clickSwitch(switchFive);
-            totalClicks++;
         }
         if (puzzleIsCompleted()) {
             Toast.makeText(getActivity(), "DONE with " + totalClicks + " clicks!" , Toast.LENGTH_SHORT).show();
