@@ -14,4 +14,14 @@
         tools:layout="@layout/fragment_clock"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"></fragment>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Level 1"
+        android:id="@+id/levelOneButton"
+        android:layout_below="@+id/clockFragment"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp" />
+
 </RelativeLayout>

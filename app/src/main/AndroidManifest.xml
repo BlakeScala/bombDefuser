@@ -19,11 +19,12 @@
         </activity>
         <activity
             android:name=".ui.CreateAccountActivity"
-            android:screenOrientation="landscape"></activity>
+            android:screenOrientation="landscape" />
         <activity
             android:name=".ui.MainActivity"
-            android:screenOrientation="landscape"></activity>
-        <activity android:name=".ui.GameActivity"></activity>
+            android:screenOrientation="landscape" />
+        <activity android:name=".ui.GameActivity" />
+        <activity android:name=".ui.SwitchOneActivity"></activity>
     </application>
 
 </manifest>

@@ -34,7 +34,8 @@ public class SwitchLevel {
         return completed;
     }
 
-    public ArrayList<Boolean> getSwitches() {
+    public List<Boolean> getSwitches() {
+        return switches;
     }
 
     public void generateSwitches(int numberOfSwitches) {

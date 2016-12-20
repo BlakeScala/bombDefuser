@@ -1,4 +1,4 @@
-package com.epicodus.blake.bombdefuser;
+package com.epicodus.blake.bombdefuser.models;
 
 import android.os.CountDownTimer;
 
