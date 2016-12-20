@@ -43,4 +43,6 @@ public class SwitchOneFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_switch_one, container, false);
     }
 
+
+
 }
