@@ -40,12 +40,13 @@ public class SwitchOneFragment extends Fragment implements View.OnClickListener 
     List<Switch> levelOneSwitches = Arrays.asList(switchOne, switchTwo, switchThree, switchFour, switchFive);
     List<ImageView> levelOneBlocks = Arrays.asList(blockOne, blockTwo, blockThree, blockFour, blockFive);
 
-    SwitchLevel switchPuzzleOne = new SwitchLevel(1, levelOneSwitches);
-
     public SwitchOneFragment() {
         // Required empty public constructor
     }
 
+    public int getLevel() {
+        return 1;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -67,34 +68,66 @@ public class SwitchOneFragment extends Fragment implements View.OnClickListener 
 
     public void onClick(View v) {
         if (v == blockOne) {
-            switchPuzzleOne.clickSwitch(switchOne.getIndex());
-            changeBlockColors();
+            clickSwitch(switchOne);
         }
         if (v == blockTwo) {
-            switchPuzzleOne.clickSwitch(switchTwo.getIndex());
-            changeBlockColors();
+            clickSwitch(switchTwo);
         }
         if (v == blockThree) {
-            switchPuzzleOne.clickSwitch(switchThree.getIndex());
-            changeBlockColors();
+            clickSwitch(switchThree);
         }
         if (v == blockFour) {
-            switchPuzzleOne.clickSwitch(switchFour.getIndex());
-            changeBlockColors();
+            clickSwitch(switchFour);
         }
         if (v == blockFive) {
-            switchPuzzleOne.clickSwitch(switchFive.getIndex());
-            changeBlockColors();
+            clickSwitch(switchFive);
         }
     }
 
     public void changeBlockColors(ImageView block) {
         for (int i = 0; i < levelOneSwitches.size(); i++) {
             if (levelOneSwitches.get(i).getCurrentColor().equals("blue")) {
-                block.setBackgroundColor(Color.rgb(66, 134, 244));
+                block.setBackgroundColor(Color.rgb(0, 134, 244));
             } else if (levelOneSwitches.get(i).getCurrentColor().equals("red")) {
                 block.setBackgroundColor(Color.rgb(244, 98, 66));
             }
+        }
+    }
+
+    public void clickSwitch(Switch clickedSwitch) {
+
+        Switch switchOne = this.levelOneSwitches.get(0);
+        Switch switchTwo = this.levelOneSwitches.get(1);
+        Switch switchThree = this.levelOneSwitches.get(2);
+        Switch switchFour = this.levelOneSwitches.get(3);
+        Switch switchFive = this.levelOneSwitches.get(4);
+
+        if (this.getLevel() == 1) {
+            if (clickedSwitch == switchOne) {
+                toggleColor(switchOne, blockOne);
+            } else if (clickedSwitch == switchTwo) {
+                toggleColor(switchTwo, blockTwo);
+            } else if (clickedSwitch == switchThree) {
+                toggleColor(switchThree, blockThree);
+            } else if (clickedSwitch == switchFour) {
+                toggleColor(switchFour, blockFour);
+            } else if (clickedSwitch == switchFive) {
+                toggleColor(switchFive, blockFive);
+            }
+        } else if (this.getLevel() == 2) {
+
+        } else if (this.getLevel() == 3) {
+
+        }
+    }
+
+    public void toggleColor(Switch clickedSwitch, ImageView block) {
+        if (clickedSwitch.getCurrentColor().equals("blue")) {
+            clickedSwitch.setCurrentColor("red");
+            block.setBackgroundColor(Color.rgb(244, 98, 66));
+        } else if (clickedSwitch.getCurrentColor().equals("red")) {
+            clickedSwitch.setCurrentColor("blue");
+            block.setBackgroundColor(Color.rgb(66, 134, 244));
         }
     }
 }

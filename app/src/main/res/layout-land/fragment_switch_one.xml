@@ -3,50 +3,59 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:background="@color/colorPrimary"
-        android:id="@+id/switchOne"
-        android:layout_marginRight="25dp"
-        android:layout_alignParentTop="true"
-        android:layout_toLeftOf="@+id/switchTwo"
-        android:layout_toStartOf="@+id/switchTwo" />
+    <RelativeLayout
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:padding="40px"
+        android:layout_centerHorizontal="true"
+        android:background="@color/grey">
 
-    <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:background="@color/colorPrimary"
-        android:id="@+id/switchTwo"
-        android:layout_alignParentTop="true"
-        android:layout_toLeftOf="@+id/switchThree"
-        android:layout_marginRight="25dp"/>
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@color/colorPrimary"
+            android:id="@+id/switchOne"
+            android:layout_marginRight="25dp"
+            android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@+id/switchTwo"
+            android:layout_toStartOf="@+id/switchTwo" />
 
-    <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="25dp"
-        android:background="@color/colorPrimary"
-        android:id="@+id/switchFive"
-        android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/switchFour"
-        android:layout_toEndOf="@+id/switchFour" />
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@color/colorPrimary"
+            android:id="@+id/switchTwo"
+            android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@+id/switchThree"
+            android:layout_marginRight="25dp"/>
 
-    <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="25dp"
-        android:background="@color/colorPrimary"
-        android:id="@+id/switchFour"
-        android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/switchThree"
-        android:layout_toEndOf="@+id/switchThree" />
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="25dp"
+            android:background="@color/colorPrimary"
+            android:id="@+id/switchFive"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/switchFour"
+            android:layout_toEndOf="@+id/switchFour" />
 
-    <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:background="@color/colorPrimary"
-        android:id="@+id/switchThree"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="25dp"
+            android:background="@color/colorPrimary"
+            android:id="@+id/switchFour"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/switchThree"
+            android:layout_toEndOf="@+id/switchThree" />
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@color/colorPrimary"
+            android:id="@+id/switchThree"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+
+    </RelativeLayout>
 </RelativeLayout>
