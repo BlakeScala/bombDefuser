@@ -27,6 +27,7 @@ import butterknife.ButterKnife;
  */
 public class SwitchOneFragment extends Fragment implements View.OnClickListener {
     List<String> levelOneColors = Arrays.asList("blue", "red");
+    List<ImageView> levelOneBlocks;
     @Bind(R.id.switchOne) ImageView blockOne;
     @Bind(R.id.switchTwo) ImageView blockTwo;
     @Bind(R.id.switchThree) ImageView blockThree;
@@ -42,7 +43,7 @@ public class SwitchOneFragment extends Fragment implements View.OnClickListener 
     public int totalClicks = 0;
 
     List<Switch> levelOneSwitches = Arrays.asList(switchOne, switchTwo, switchThree, switchFour, switchFive);
-    List<ImageView> levelOneBlocks = Arrays.asList(blockOne, blockTwo, blockThree, blockFour, blockFive);
+
 
     public SwitchOneFragment() {
         // Required empty public constructor
@@ -60,6 +61,8 @@ public class SwitchOneFragment extends Fragment implements View.OnClickListener 
 
         ButterKnife.bind(this, view);
 
+        levelOneBlocks = Arrays.asList(blockOne, blockTwo, blockThree, blockFour, blockFive);
+
         blockOne.setOnClickListener(this);
         blockTwo.setOnClickListener(this);
         blockThree.setOnClickListener(this);
@@ -72,7 +75,11 @@ public class SwitchOneFragment extends Fragment implements View.OnClickListener 
         bindColors(switchFour, blockFour);
         bindColors(switchFive, blockFive);
 
-//        generateLevel();
+        generateLevel();
+
+        while (hasTooManyBlues()) {
+            generateLevel();
+        }
 
         return view;
     }
@@ -110,15 +117,26 @@ public class SwitchOneFragment extends Fragment implements View.OnClickListener 
         }
     }
 
+    public boolean hasTooManyBlues() {
+        int counter = 0;
+        for (int i = 0; i < levelOneSwitches.size(); i++) {
+            if (levelOneSwitches.get(i).getCurrentColor().equals("blue")) {
+                counter++;
+            }
+        }
+        if (counter > 3) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public void generateLevel() {
-        int numberToSwitch = 5;
+        int numberToSwitch = 200;
         for (int i = 0; i < numberToSwitch; i++) {
             int randomNumber = randomWithRange(0, 4);
             Log.v("random", "" + randomNumber);
-            Log.v("random", "" + randomNumber);
-            Log.v("random", "" + levelOneSwitches.get(randomNumber).getCurrentColor());
-            Log.v("random", "" + levelOneBlocks.get(randomNumber).getId());
-//            toggleSwitch(levelOneSwitches.get(randomNumber), levelOneBlocks.get(randomNumber));
+            toggleSwitch(levelOneSwitches.get(randomNumber), levelOneBlocks.get(randomNumber));
         }
     }
 
