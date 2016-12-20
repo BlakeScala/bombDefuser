@@ -16,30 +16,12 @@ public class Switch {
     private int timesClicked = 0;
 
 
-    public Switch(String currentColor, int currentLevel){
+    public Switch(String currentColor){
         this.currentColor = currentColor;
-        this.currentLevel = currentLevel;
     }
 
-    public List<String> getColorOptions() {
-        if (this.getCurrentLevel() == 1) {
-            return levelOneColors;
-        } else if (this.getCurrentLevel() == 2) {
-            return levelTwoColors;
-        } else if (this.getCurrentLevel() == 3) {
-            return levelThreeColors;
-        }
-    }
-
-    public String toggle() {
-        if (this.currentLevel == 1) {
-            if (this.currentColor == "blue") {
-                this.currentColor = "red";
-            } else if (this.currentColor == "red") {
-                this.currentColor = "blue";
-            }
-
-        }
+    public void setCurrentColor(String color) {
+        this.currentColor = color;
     }
 
     public int getCurrentLevel() {
