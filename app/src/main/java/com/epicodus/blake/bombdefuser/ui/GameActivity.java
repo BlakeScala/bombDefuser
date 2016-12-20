@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.epicodus.blake.bombdefuser.R;
@@ -18,6 +19,7 @@ import butterknife.ButterKnife;
 public class GameActivity extends AppCompatActivity implements View.OnClickListener {
     @Bind(R.id.levelOneButton) Button mLevelOneButton;
     @Bind(R.id.clockTimerView) TextView mClockTimerView;
+    @Bind(R.id.levelContainer) FrameLayout mLevelContainer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

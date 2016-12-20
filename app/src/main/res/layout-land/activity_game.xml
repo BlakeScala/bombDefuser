@@ -24,8 +24,15 @@
         android:layout_height="wrap_content"
         android:text="Level 1"
         android:id="@+id/levelOneButton"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/clockTimerView"
+        android:layout_toLeftOf="@+id/clockTimerView"
+        android:layout_toStartOf="@+id/clockTimerView" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/levelContainer"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="115dp" />
+        android:layout_below="@+id/levelOneButton"></FrameLayout>
 
 </RelativeLayout>
