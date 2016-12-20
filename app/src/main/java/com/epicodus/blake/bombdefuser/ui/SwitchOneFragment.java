@@ -5,10 +5,12 @@ import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.epicodus.blake.bombdefuser.R;
 import com.epicodus.blake.bombdefuser.models.Switch;
@@ -31,10 +33,10 @@ public class SwitchOneFragment extends Fragment implements View.OnClickListener 
     @Bind(R.id.switchFour) ImageView blockFour;
     @Bind(R.id.switchFive) ImageView blockFive;
 
-    Switch switchOne = new Switch(0, levelOneColors.get(0));
+    Switch switchOne = new Switch(0, levelOneColors.get(1));
     Switch switchTwo = new Switch(1, levelOneColors.get(0));
-    Switch switchThree = new Switch(2, levelOneColors.get(0));
-    Switch switchFour = new Switch(3, levelOneColors.get(0));
+    Switch switchThree = new Switch(2, levelOneColors.get(1));
+    Switch switchFour = new Switch(3, levelOneColors.get(1));
     Switch switchFive = new Switch(4, levelOneColors.get(0));
 
     List<Switch> levelOneSwitches = Arrays.asList(switchOne, switchTwo, switchThree, switchFour, switchFive);
@@ -62,6 +64,11 @@ public class SwitchOneFragment extends Fragment implements View.OnClickListener 
         blockFour.setOnClickListener(this);
         blockFive.setOnClickListener(this);
 
+        bindColors(switchOne,blockOne);
+        bindColors(switchTwo, blockTwo);
+        bindColors(switchThree, blockThree);
+        bindColors(switchFour, blockFour);
+        bindColors(switchFive, blockFive);
 
         return view;
     }
@@ -81,6 +88,10 @@ public class SwitchOneFragment extends Fragment implements View.OnClickListener 
         }
         if (v == blockFive) {
             clickSwitch(switchFive);
+        }
+        if (puzzleIsCompleted()) {
+            Toast.makeText(getActivity(), "DONE", Toast.LENGTH_SHORT).show();
+            Log.v("LOG", "FINISHED");
         }
     }
 
@@ -104,15 +115,15 @@ public class SwitchOneFragment extends Fragment implements View.OnClickListener 
 
         if (this.getLevel() == 1) {
             if (clickedSwitch == switchOne) {
-                toggleColor(switchOne, blockOne);
+                toggleSwitch(switchOne, blockOne);
             } else if (clickedSwitch == switchTwo) {
-                toggleColor(switchTwo, blockTwo);
+                toggleSwitch(switchTwo, blockTwo);
             } else if (clickedSwitch == switchThree) {
-                toggleColor(switchThree, blockThree);
+                toggleSwitch(switchThree, blockThree);
             } else if (clickedSwitch == switchFour) {
-                toggleColor(switchFour, blockFour);
+                toggleSwitch(switchFour, blockFour);
             } else if (clickedSwitch == switchFive) {
-                toggleColor(switchFive, blockFive);
+                toggleSwitch(switchFive, blockFive);
             }
         } else if (this.getLevel() == 2) {
 
@@ -121,14 +132,33 @@ public class SwitchOneFragment extends Fragment implements View.OnClickListener 
         }
     }
 
-    public void toggleColor(Switch clickedSwitch, ImageView block) {
+    public void toggleSwitch(Switch clickedSwitch, ImageView block) {
         if (clickedSwitch.getCurrentColor().equals("blue")) {
             clickedSwitch.setCurrentColor("red");
-            block.setBackgroundColor(Color.rgb(244, 98, 66));
+            bindColors(clickedSwitch, block);
         } else if (clickedSwitch.getCurrentColor().equals("red")) {
             clickedSwitch.setCurrentColor("blue");
-            block.setBackgroundColor(Color.rgb(66, 134, 244));
+            bindColors(clickedSwitch, block);
         }
+    }
+
+    public void bindColors(Switch clickedSwitch, ImageView block) {
+        Log.v("TAG", clickedSwitch.getCurrentColor());
+        if (clickedSwitch.getCurrentColor().equals("blue")) {
+            block.setBackgroundColor(Color.rgb(66, 134, 244));
+        } else if (clickedSwitch.getCurrentColor().equals("red")) {
+            block.setBackgroundColor(Color.rgb(244, 98, 66));
+        }
+    }
+
+    public boolean puzzleIsCompleted() {
+        boolean isCompleted = true;
+        for (int i = 0; i < levelOneSwitches.size(); i++) {
+            if (!(levelOneSwitches.get(i).getCurrentColor().equals("blue"))) {
+                isCompleted = false;
+            }
+        }
+        return isCompleted;
     }
 }
 
