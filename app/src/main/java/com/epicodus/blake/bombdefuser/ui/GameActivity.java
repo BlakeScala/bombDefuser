@@ -51,8 +51,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
     public void onClick(View v) {
         if (v == mLevelOneButton) {
-            Intent intent = new Intent(GameActivity.this, SwitchOneActivity.class);
-            startActivity(intent);
+
         }
     }
 }
