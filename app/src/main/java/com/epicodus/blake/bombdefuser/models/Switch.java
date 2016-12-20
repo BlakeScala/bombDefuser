@@ -1,5 +1,7 @@
 package com.epicodus.blake.bombdefuser.models;
 
+import android.widget.LinearLayout;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -12,9 +14,7 @@ public class Switch {
     private String currentColor;
     private int currentLevel;
     private int timesClicked = 0;
-    private List<String> levelOneColors = Arrays.asList("blue", "red");
-    private List<String> levelTwoColors = Arrays.asList("blue", "red", "purple");
-    private List<String> levelThreeColors = Arrays.asList("blue", "red", "purple", "grey");
+
 
     public Switch(String currentColor, int currentLevel){
         this.currentColor = currentColor;
@@ -33,6 +33,11 @@ public class Switch {
 
     public String toggle() {
         if (this.currentLevel == 1) {
+            if (this.currentColor == "blue") {
+                this.currentColor = "red";
+            } else if (this.currentColor == "red") {
+                this.currentColor = "blue";
+            }
 
         }
     }
