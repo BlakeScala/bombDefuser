@@ -39,6 +39,8 @@ public class SwitchOneFragment extends Fragment implements View.OnClickListener 
     Switch switchFour = new Switch(3, levelOneColors.get(1));
     Switch switchFive = new Switch(4, levelOneColors.get(0));
 
+    public int totalClicks = 0;
+
     List<Switch> levelOneSwitches = Arrays.asList(switchOne, switchTwo, switchThree, switchFour, switchFive);
     List<ImageView> levelOneBlocks = Arrays.asList(blockOne, blockTwo, blockThree, blockFour, blockFive);
 
@@ -70,7 +72,7 @@ public class SwitchOneFragment extends Fragment implements View.OnClickListener 
         bindColors(switchFour, blockFour);
         bindColors(switchFive, blockFive);
 
-        generateLevel();
+//        generateLevel();
 
         return view;
     }
@@ -78,21 +80,26 @@ public class SwitchOneFragment extends Fragment implements View.OnClickListener 
     public void onClick(View v) {
         if (v == blockOne) {
             clickSwitch(switchOne);
+            totalClicks++;
         }
         if (v == blockTwo) {
             clickSwitch(switchTwo);
+            totalClicks++;
         }
         if (v == blockThree) {
             clickSwitch(switchThree);
+            totalClicks++;
         }
         if (v == blockFour) {
             clickSwitch(switchFour);
+            totalClicks++;
         }
         if (v == blockFive) {
             clickSwitch(switchFive);
+            totalClicks++;
         }
         if (puzzleIsCompleted()) {
-            Toast.makeText(getActivity(), "DONE", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "DONE with " + totalClicks + " clicks!" , Toast.LENGTH_SHORT).show();
             Log.v("LOG", "FINISHED");
         }
     }
