@@ -64,11 +64,13 @@ public class SwitchOneFragment extends Fragment implements View.OnClickListener 
         blockFour.setOnClickListener(this);
         blockFive.setOnClickListener(this);
 
-        bindColors(switchOne,blockOne);
+        bindColors(switchOne ,blockOne);
         bindColors(switchTwo, blockTwo);
         bindColors(switchThree, blockThree);
         bindColors(switchFour, blockFour);
         bindColors(switchFive, blockFive);
+
+        generateLevel();
 
         return view;
     }
@@ -103,6 +105,24 @@ public class SwitchOneFragment extends Fragment implements View.OnClickListener 
                 block.setBackgroundColor(Color.rgb(244, 98, 66));
             }
         }
+    }
+
+    public void generateLevel() {
+        int numberToSwitch = 5;
+        for (int i = 0; i < numberToSwitch; i++) {
+            int randomNumber = randomWithRange(0, 4);
+            Log.v("random", "" + randomNumber);
+            Log.v("random", "" + randomNumber);
+            Log.v("random", "" + levelOneSwitches.get(randomNumber).getCurrentColor());
+            Log.v("random", "" + levelOneBlocks.get(randomNumber).getId());
+//            toggleSwitch(levelOneSwitches.get(randomNumber), levelOneBlocks.get(randomNumber));
+        }
+    }
+
+    int randomWithRange(int min, int max)
+    {
+        int range = (max - min) + 1;
+        return (int)(Math.random() * range) + min;
     }
 
     public void clickSwitch(Switch clickedSwitch) {
