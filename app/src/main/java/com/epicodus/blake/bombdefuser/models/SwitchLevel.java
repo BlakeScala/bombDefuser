@@ -40,13 +40,38 @@ public class SwitchLevel {
         return this.colorArray;
     }
 
-    public void clickSwitch(Switch clickedSwitch) {
+    public void clickSwitch(int switchIndex) {
+
+        Switch switchOne = this.getSwitches().get(0);
+        Switch switchTwo = this.getSwitches().get(1);
+        Switch switchThree = this.getSwitches().get(2);
+        Switch switchFour = this.getSwitches().get(3);
+        Switch switchFive = this.getSwitches().get(4);
+
         if (this.getLevel() == 1) {
-            if
+            if (switchIndex == 0) {
+                toggleColor(switchOne);
+            } else if (switchIndex == 1) {
+                toggleColor(switchTwo);
+            } else if (switchIndex == 2) {
+                toggleColor(switchThree);
+            } else if (switchIndex == 3) {
+                toggleColor(switchFour);
+            } else if (switchIndex == 4) {
+                toggleColor(switchFive);
+            }
         } else if (this.getLevel() == 2) {
 
         } else if (this.getLevel() == 3) {
 
+        }
+    }
+
+    public void toggleColor(Switch thisSwitch) {
+        if (thisSwitch.getCurrentColor().equals("blue")) {
+            thisSwitch.setCurrentColor("red");
+        } else if (thisSwitch.getCurrentColor().equals("red")) {
+            thisSwitch.setCurrentColor("blue");
         }
     }
 }

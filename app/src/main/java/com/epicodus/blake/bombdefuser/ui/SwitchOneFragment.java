@@ -2,6 +2,7 @@ package com.epicodus.blake.bombdefuser.ui;
 
 
 import android.content.pm.ActivityInfo;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -17,6 +18,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import butterknife.Bind;
+import butterknife.ButterKnife;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -34,7 +36,9 @@ public class SwitchOneFragment extends Fragment implements View.OnClickListener 
     Switch switchThree = new Switch(2, levelOneColors.get(0));
     Switch switchFour = new Switch(3, levelOneColors.get(0));
     Switch switchFive = new Switch(4, levelOneColors.get(0));
+
     List<Switch> levelOneSwitches = Arrays.asList(switchOne, switchTwo, switchThree, switchFour, switchFive);
+    List<ImageView> levelOneBlocks = Arrays.asList(blockOne, blockTwo, blockThree, blockFour, blockFive);
 
     SwitchLevel switchPuzzleOne = new SwitchLevel(1, levelOneSwitches);
 
@@ -47,25 +51,50 @@ public class SwitchOneFragment extends Fragment implements View.OnClickListener 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_switch_one, container, false);
 
-        return inflater.inflate(R.layout.fragment_switch_one, container, false);
+        ButterKnife.bind(this, view);
+
+        blockOne.setOnClickListener(this);
+        blockTwo.setOnClickListener(this);
+        blockThree.setOnClickListener(this);
+        blockFour.setOnClickListener(this);
+        blockFive.setOnClickListener(this);
+
+
+        return view;
     }
 
     public void onClick(View v) {
         if (v == blockOne) {
-            switchPuzzleOne.clickSwitch(levelOneSwitches.get(0));
+            switchPuzzleOne.clickSwitch(switchOne.getIndex());
+            changeBlockColors();
         }
         if (v == blockTwo) {
-            switchPuzzleOne.clickSwitch(levelOneSwitches.get(1));
+            switchPuzzleOne.clickSwitch(switchTwo.getIndex());
+            changeBlockColors();
         }
         if (v == blockThree) {
-            switchPuzzleOne.clickSwitch(levelOneSwitches.get(2));
+            switchPuzzleOne.clickSwitch(switchThree.getIndex());
+            changeBlockColors();
         }
         if (v == blockFour) {
-            switchPuzzleOne.clickSwitch(levelOneSwitches.get(3));
+            switchPuzzleOne.clickSwitch(switchFour.getIndex());
+            changeBlockColors();
         }
         if (v == blockFive) {
-            switchPuzzleOne.clickSwitch(levelOneSwitches.get(4));
+            switchPuzzleOne.clickSwitch(switchFive.getIndex());
+            changeBlockColors();
+        }
+    }
+
+    public void changeBlockColors(ImageView block) {
+        for (int i = 0; i < levelOneSwitches.size(); i++) {
+            if (levelOneSwitches.get(i).getCurrentColor().equals("blue")) {
+                block.setBackgroundColor(Color.rgb(66, 134, 244));
+            } else if (levelOneSwitches.get(i).getCurrentColor().equals("red")) {
+                block.setBackgroundColor(Color.rgb(244, 98, 66));
+            }
         }
     }
 }
