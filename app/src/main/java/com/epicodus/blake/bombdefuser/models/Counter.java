@@ -7,20 +7,17 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created by Guest on 12/19/16.
  */
-public class Counter extends CountDownTimer {
+public class Counter {
     private static String hms;
     private static Counter instance;
+    public long millis;
+    public long countdownInterval;
 
-    private Counter(long millis, long countDownInterval) {
-        super(millis,countDownInterval);
+    public Counter(long millis, long countDownInterval) {
+        this.millis = millis;
+        this.countdownInterval = countDownInterval;
     }
 
-    public static Counter initInstance(long millis, long countDownInterval) {
-        if (instance == null) {
-            instance = new Counter(millis, countDownInterval);
-        }
-        return instance;
-    }
 
     public static Counter getInstance() throws Exception {
         if (instance == null) {
@@ -34,16 +31,23 @@ public class Counter extends CountDownTimer {
         return hms;
     }
 
-    @Override
-    public void onTick(long l) {
-        long millis = l;
-        hms = String.format("%02d:%02d:%02d", TimeUnit.MILLISECONDS.toHours(millis),
-                TimeUnit.MILLISECONDS.toMinutes(millis) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(millis)),
-                TimeUnit.MILLISECONDS.toSeconds(millis) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millis))
-        );
-    }
+    public void createCountdown() {
+        CountDownTimer timer = new CountDownTimer(this.millis, this.countdownInterval) {
+            @Override
+            public void onTick(long timeLeft) {
+                long millis = timeLeft;
+                String hms = String.format("%02d:%02d",
+                        java.util.concurrent.TimeUnit.MILLISECONDS.toMinutes(millis) - java.util.concurrent.TimeUnit.HOURS.toMinutes(java.util.concurrent.TimeUnit.MILLISECONDS.toHours(millis)),
+                        java.util.concurrent.TimeUnit.MILLISECONDS.toSeconds(millis) - java.util.concurrent.TimeUnit.MINUTES.toSeconds(java.util.concurrent.TimeUnit.MILLISECONDS.toMinutes(millis))
+                );
+                String timeLeftString = String.valueOf((timeLeft / 1000));
+            }
 
-    public void onFinish() {
-
+            @Override
+            public void onFinish() {
+                // Take to loser's page!
+            }
+        };
+        timer.start();
     }
 }

@@ -7,10 +7,4 @@
     android:background="@color/brightBlue"
     android:id="@+id/layout">
 
-    <fragment
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:name="com.epicodus.blake.bombdefuser.ui.ClockFragment"
-        tools:layout="@layout/fragment_clock"
-        android:layout_gravity="center"/>
 </LinearLayout>

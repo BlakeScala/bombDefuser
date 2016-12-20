@@ -5,23 +5,27 @@
     android:layout_height="match_parent"
     android:background="@color/brightBlue">
 
-
-    <fragment
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:name="com.epicodus.blake.bombdefuser.ui.ClockFragment"
-        android:id="@+id/clockFragment"
-        tools:layout="@layout/fragment_clock"
+        android:text="0:00"
+        android:id="@+id/clockTimerView"
+        android:textSize="50sp"
+        android:textColor="@color/clockText"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:background="@color/black"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"></fragment>
-
+        android:layout_centerHorizontal="true" />
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Level 1"
         android:id="@+id/levelOneButton"
-        android:layout_below="@+id/clockFragment"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp" />
+        android:layout_marginBottom="115dp" />
 
 </RelativeLayout>
