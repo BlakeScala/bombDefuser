@@ -16,7 +16,6 @@ public class SwitchLevel {
     private List<String> levelTwoColors = Arrays.asList("blue", "red", "purple");
     private List<String> levelThreeColors = Arrays.asList("blue", "red", "purple", "grey");
 
-
     public SwitchLevel(int level, List<Switch> switches) {
         this.level = level;
         this.switches = switches;
@@ -33,13 +32,62 @@ public class SwitchLevel {
     public List<String> getColorOptions() {
         if (this.getLevel() == 1) {
             this.colorArray = levelOneColors;
-
         } else if (this.getLevel() == 2) {
             this.colorArray = levelTwoColors;
         } else if (this.getLevel() == 3) {
             this.colorArray = levelThreeColors;
         }
         return this.colorArray;
+    }
+
+    public void clickSwitch(Switch clickedSwitch) {
+        if (this.getLevel() == 1) {
+
+        } else if (this.getLevel() == 2) {
+
+        } else if (this.getLevel() == 3) {
+
+        }
+    }
+
+    public void clickSwitchTwo() {
+        if (this.getLevel() == 1) {
+
+        } else if (this.getLevel() == 2) {
+
+        } else if (this.getLevel() == 3) {
+
+        }
+    }
+
+    public void clickSwitchThree() {
+        if (this.getLevel() == 1) {
+
+        } else if (this.getLevel() == 2) {
+
+        } else if (this.getLevel() == 3) {
+
+        }
+    }
+
+    public void clickSwitchFour() {
+        if (this.getLevel() == 1) {
+
+        } else if (this.getLevel() == 2) {
+
+        } else if (this.getLevel() == 3) {
+
+        }
+    }
+
+    public void clickSwitchFive() {
+        if (this.getLevel() == 1) {
+
+        } else if (this.getLevel() == 2) {
+
+        } else if (this.getLevel() == 3) {
+
+        }
     }
 
 

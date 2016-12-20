@@ -22,12 +22,14 @@ public class SwitchOneActivity extends AppCompatActivity {
         setContentView(R.layout.activity_switch_one);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
-        Switch switchOne = new Switch("blue");
-        Switch switchTwo = new Switch("blue");
-        Switch switchThree = new Switch("blue");
-        Switch switchFour = new Switch("blue");
-        Switch switchFive = new Switch("blue");
+        List<String> levelOneColors = Arrays.asList("blue", "red");
+        Switch switchOne = new Switch(levelOneColors.get(0));
+        Switch switchTwo = new Switch(levelOneColors.get(0));
+        Switch switchThree = new Switch(levelOneColors.get(0));
+        Switch switchFour = new Switch(levelOneColors.get(0));
+        Switch switchFive = new Switch(levelOneColors.get(0));
         List<Switch> levelOneSwitches = Arrays.asList(switchOne, switchTwo, switchThree, switchFour, switchFive);
+
         SwitchLevel switchPuzzleOne = new SwitchLevel(1, levelOneSwitches);
     }
 }
