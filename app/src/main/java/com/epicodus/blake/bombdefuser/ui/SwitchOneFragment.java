@@ -40,7 +40,7 @@ public class SwitchOneFragment extends Fragment implements View.OnClickListener 
     Switch switchFour = new Switch(3, levelOneColors.get(1));
     Switch switchFive = new Switch(4, levelOneColors.get(0));
 
-    public int totalClicks = 0;
+    private int totalClicks = 0;
 
     List<Switch> levelOneSwitches = Arrays.asList(switchOne, switchTwo, switchThree, switchFour, switchFive);
 
@@ -51,6 +51,10 @@ public class SwitchOneFragment extends Fragment implements View.OnClickListener 
 
     public int getLevel() {
         return 1;
+    }
+
+    public int getTotalClicks() {
+        return totalClicks;
     }
 
     @Override

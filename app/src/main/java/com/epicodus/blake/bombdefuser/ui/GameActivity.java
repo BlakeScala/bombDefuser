@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
@@ -21,6 +22,10 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     @Bind(R.id.levelOneButton) Button mLevelOneButton;
     @Bind(R.id.clockTimerView) TextView mClockTimerView;
     @Bind(R.id.levelContainer) FrameLayout mLevelContainer;
+    SwitchOneFragment levelOne;
+    FragmentTransaction transaction;
+    int levelOneTotalClicks;
+    boolean levelOneStarted = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +45,13 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                 );
                 String timeLeftString = String.valueOf((timeLeft/1000));
                 mClockTimerView.setText(hms);
+
+
+                if (levelOneStarted) {
+                    if (levelOneDone()) {
+                        getSupportFragmentManager().beginTransaction().remove(levelOne).commit();
+                    }
+                }
             }
 
             @Override
@@ -52,11 +64,22 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
     public void onClick(View v) {
         if (v == mLevelOneButton) {
-            SwitchOneFragment levelOne = new SwitchOneFragment();
+            levelOneStarted = true;
+            levelOne = new SwitchOneFragment();
 
-            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction = getSupportFragmentManager().beginTransaction();
             transaction.add(R.id.levelContainer, levelOne);
             transaction.commit();
         }
     }
+    public boolean levelOneDone() {
+        if(levelOne.puzzleIsCompleted()) {
+            levelOneTotalClicks = levelOne.getTotalClicks();
+            Log.v("TAG", "" + levelOneTotalClicks);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }
