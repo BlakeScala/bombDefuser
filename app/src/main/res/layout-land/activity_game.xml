@@ -76,6 +76,16 @@
         android:id="@+id/combinationContainer"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true">
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@color/red"
+            android:id="@+id/submitComboButton"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="335dp" />
+
     </FrameLayout>
 
 

@@ -41,6 +41,7 @@ public class SwitchTwoFragment extends Fragment implements View.OnClickListener 
     Switch switchFive = new Switch(4, levelTwoColors.get(0));
 
     private int totalClicks = 0;
+    private int levelCombo = 0;
 
     List<Switch> levelTwoSwitches = Arrays.asList(switchOne, switchTwo, switchThree, switchFour, switchFive);
 
@@ -55,6 +56,10 @@ public class SwitchTwoFragment extends Fragment implements View.OnClickListener 
 
     public int getTotalClicks() {
         return totalClicks;
+    }
+
+    public int getLevelCombo() {
+        return levelCombo;
     }
 
     @Override
@@ -89,7 +94,7 @@ public class SwitchTwoFragment extends Fragment implements View.OnClickListener 
     }
 
     public void onClick(View v) {
-        totalClicks++;
+        addClicks();
         if (v == blockOne) {
             clickSwitch(switchOne);
         }
@@ -202,6 +207,16 @@ public class SwitchTwoFragment extends Fragment implements View.OnClickListener 
             }
         }
         return isCompleted;
+    }
+
+    public void addClicks() {
+        totalClicks++;
+        if (levelCombo == 100) {
+            levelCombo = 0;
+        } else {
+            levelCombo++;
+        }
+
     }
 }
 

@@ -41,6 +41,7 @@ public class SwitchOneFragment extends Fragment implements View.OnClickListener 
     Switch switchFive = new Switch(4, levelOneColors.get(0));
 
     private int totalClicks = 0;
+    private int levelCombo = 0;
 
     List<Switch> levelOneSwitches = Arrays.asList(switchOne, switchTwo, switchThree, switchFour, switchFive);
 
@@ -89,7 +90,7 @@ public class SwitchOneFragment extends Fragment implements View.OnClickListener 
     }
 
     public void onClick(View v) {
-        totalClicks++;
+        addClicks();
         if (v == blockOne) {
             clickSwitch(switchOne);
         }
@@ -191,6 +192,16 @@ public class SwitchOneFragment extends Fragment implements View.OnClickListener 
             }
         }
         return isCompleted;
+    }
+
+    public void addClicks() {
+        totalClicks++;
+        if (levelCombo == 100) {
+            levelCombo = 0;
+        } else {
+            levelCombo++;
+        }
+
     }
 }
 

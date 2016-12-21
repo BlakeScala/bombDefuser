@@ -24,6 +24,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     @Bind(R.id.levelTwoButton) Button mLevelTwoButton;
     @Bind(R.id.clockTimerView) TextView mClockTimerView;
     @Bind(R.id.levelThreeButton) Button mLevelThreeButton;
+    @Bind(R.id.submitComboButton) Button mSubmitComboButton;
     @Bind(R.id.levelContainer) FrameLayout mLevelContainer;
     @Bind(R.id.combinationContainer) FrameLayout mCombinationContainer;
 
@@ -35,7 +36,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     int levelOneTotalClicks;
     int levelTwoTotalClicks;
     int levelThreeTotalClicks;
-    int finalCombination;
+    String finalCombination;
 
     boolean levelOneStarted = false;
     boolean levelTwoStarted = false;
@@ -85,13 +86,16 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                         finalLevel.setOnClickListeners();
                         finalLevel.mCombinationTextView.setHint("XX XX XX");
                         levelThreeStarted = false;
+                        startFinalLevel();
                     }
                 }
             }
 
             @Override
             public void onFinish() {
-                // Take to loser's page!
+                Intent intent = new Intent(GameActivity.this, LoseGameActivity.class);
+                startActivity(intent);
+                finish();
             }
         };
         timer.start();
@@ -121,6 +125,15 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             transaction = getSupportFragmentManager().beginTransaction();
             transaction.add(R.id.levelContainer, levelThree);
             transaction.commit();
+        }
+        if (v == mSubmitComboButton) {
+            String levelOneComboString = String.valueOf(levelOneTotalClicks);
+            String levelTwoComboString = String.valueOf(levelTwoTotalClicks);
+            String levelThreeComboString = String.valueOf(levelThreeTotalClicks);
+            finalCombination = levelOneComboString + levelTwoComboString + levelThreeComboString;
+            String combinationEntry = finalLevel.getCombinationInput();
+            Log.v("TAG", "Combo: " + finalCombination);
+            Log.v("TAG", "Combo Input: " + combinationEntry);
         }
     }
 
@@ -155,6 +168,10 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         } else {
             return false;
         }
+    }
+
+    public void startFinalLevel() {
+        mSubmitComboButton.setOnClickListener(this);
     }
 
 
