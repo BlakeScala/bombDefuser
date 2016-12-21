@@ -58,6 +58,11 @@ public class SwitchOneFragment extends Fragment implements View.OnClickListener 
         return totalClicks;
     }
 
+    public String getLevelCombo() {
+        String stringLevelCombo = String.format("%02d", this.levelCombo);
+        return stringLevelCombo;
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

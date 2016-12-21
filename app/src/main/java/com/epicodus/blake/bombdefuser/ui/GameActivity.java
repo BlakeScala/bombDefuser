@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.epicodus.blake.bombdefuser.R;
 
@@ -36,6 +37,10 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     int levelOneTotalClicks;
     int levelTwoTotalClicks;
     int levelThreeTotalClicks;
+
+    String levelOneCombo;
+    String levelTwoCombo;
+    String levelThreeCombo;
     String finalCombination;
 
     boolean levelOneStarted = false;
@@ -127,19 +132,17 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             transaction.commit();
         }
         if (v == mSubmitComboButton) {
-            String levelOneComboString = String.valueOf(levelOneTotalClicks);
-            String levelTwoComboString = String.valueOf(levelTwoTotalClicks);
-            String levelThreeComboString = String.valueOf(levelThreeTotalClicks);
-            finalCombination = levelOneComboString + levelTwoComboString + levelThreeComboString;
-            String combinationEntry = finalLevel.getCombinationInput();
-            Log.v("TAG", "Combo: " + finalCombination);
-            Log.v("TAG", "Combo Input: " + combinationEntry);
+            if (combinationsMatch()) {
+                Toast.makeText(getApplicationContext(), "WINNER", Toast.LENGTH_SHORT);
+            }
+
         }
     }
 
     public boolean levelOneDone() {
         if(levelOne.puzzleIsCompleted()) {
             levelOneTotalClicks = levelOne.getTotalClicks();
+            levelOneCombo = levelOne.getLevelCombo();
             mLevelOneButton.setOnClickListener(null);
             mLevelTwoButton.setOnClickListener(this);
             return true;
@@ -152,6 +155,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     public boolean levelTwoDone() {
         if (levelTwo.puzzleIsCompleted()) {
             levelTwoTotalClicks = levelTwo.getTotalClicks();
+            levelTwoCombo = levelTwo.getLevelCombo();
             mLevelTwoButton.setOnClickListener(null);
             mLevelThreeButton.setOnClickListener(this);
             return true;
@@ -163,6 +167,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     public boolean levelThreeDone() {
         if (levelThree.puzzleIsCompleted()) {
             levelThreeTotalClicks = levelThree.getTotalClicks();
+            levelThreeCombo = levelThree.getLevelCombo();
             mLevelThreeButton.setOnClickListener(null);
             return true;
         } else {
@@ -172,6 +177,18 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
     public void startFinalLevel() {
         mSubmitComboButton.setOnClickListener(this);
+    }
+
+    public boolean combinationsMatch() {
+        finalCombination = levelOneCombo + levelTwoCombo + levelThreeCombo;
+        String combinationEntry = finalLevel.getCombinationInput();
+        Log.v("TAG", "Combo: " + finalCombination);
+        Log.v("TAG", "Combo Input: " + combinationEntry);
+        if (finalCombination.equals(combinationEntry)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 

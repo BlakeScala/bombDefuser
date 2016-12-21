@@ -58,8 +58,9 @@ public class SwitchTwoFragment extends Fragment implements View.OnClickListener 
         return totalClicks;
     }
 
-    public int getLevelCombo() {
-        return levelCombo;
+    public String getLevelCombo() {
+        String stringLevelCombo = String.format("%02d", this.levelCombo);
+        return stringLevelCombo;
     }
 
     @Override
