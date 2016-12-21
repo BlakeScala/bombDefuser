@@ -50,41 +50,42 @@ public class CombinationFragment extends Fragment implements View.OnClickListene
     }
 
     public void onClick(View v) {
-        Log.v("TAG", "click");
         if (v == mN0) {
-            combinationInput.concat("0");
+            combinationInput += "0";
         }
         if (v == mN1) {
-            combinationInput.concat("1");
+            combinationInput += "1";
         }
         if (v == mN2) {
-            combinationInput.concat("2");
+            combinationInput += "2";
         }
         if (v == mN3) {
-            combinationInput.concat("3");
+            combinationInput += "3";
         }
         if (v == mN4) {
-            combinationInput.concat("4");
+            combinationInput += "4";
         }
         if (v == mN5) {
-            combinationInput.concat("5");
+            combinationInput += "5";
         }
         if (v == mN6) {
-            combinationInput.concat("6");
+            combinationInput += "6";
         }
         if (v == mN7) {
-            combinationInput.concat("7");
+            combinationInput += "7";
         }
         if (v == mN8) {
-            combinationInput.concat("8");
+            combinationInput += "8";
         }
         if (v == mN9) {
-            combinationInput.concat("9");
+            combinationInput += "9";
         }
         if (v == mClearButton) {
             combinationInput = "";
         }
-        Log.v("TAG", "" + combinationInput);
+        if (combinationInput.length() > 6) {
+            combinationInput = "";
+        }
         mCombinationTextView.setText(combinationInput);
     }
 
