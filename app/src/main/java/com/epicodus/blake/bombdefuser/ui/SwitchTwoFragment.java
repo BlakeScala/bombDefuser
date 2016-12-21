@@ -1,7 +1,6 @@
 package com.epicodus.blake.bombdefuser.ui;
 
 
-import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -10,11 +9,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.epicodus.blake.bombdefuser.R;
 import com.epicodus.blake.bombdefuser.models.Switch;
-import com.epicodus.blake.bombdefuser.models.SwitchLevel;
 
 import java.util.Arrays;
 import java.util.List;
@@ -25,7 +24,7 @@ import butterknife.ButterKnife;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class SwitchOneFragment extends Fragment implements View.OnClickListener {
+public class SwitchTwoFragment extends Fragment implements View.OnClickListener {
     List<String> levelOneColors = Arrays.asList("blue", "red");
     List<ImageView> levelOneBlocks;
     @Bind(R.id.switchOne) ImageView blockOne;
@@ -45,12 +44,12 @@ public class SwitchOneFragment extends Fragment implements View.OnClickListener 
     List<Switch> levelOneSwitches = Arrays.asList(switchOne, switchTwo, switchThree, switchFour, switchFive);
 
 
-    public SwitchOneFragment() {
+    public SwitchTwoFragment() {
         // Required empty public constructor
     }
 
     public int getLevel() {
-        return 1;
+        return 2;
     }
 
     public int getTotalClicks() {
@@ -61,7 +60,7 @@ public class SwitchOneFragment extends Fragment implements View.OnClickListener 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_switch_one, container, false);
+        View view = inflater.inflate(R.layout.fragment_switch_two, container, false);
 
         ButterKnife.bind(this, view);
 
@@ -196,6 +195,5 @@ public class SwitchOneFragment extends Fragment implements View.OnClickListener 
         return isCompleted;
     }
 }
-
 
 

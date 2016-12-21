@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.epicodus.blake.bombdefuser.R;
@@ -22,6 +23,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     @Bind(R.id.levelOneButton) Button mLevelOneButton;
     @Bind(R.id.clockTimerView) TextView mClockTimerView;
     @Bind(R.id.levelContainer) FrameLayout mLevelContainer;
+
     SwitchOneFragment levelOne;
     FragmentTransaction transaction;
     int levelOneTotalClicks;
@@ -34,6 +36,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         ButterKnife.bind(this);
         mLevelOneButton.setOnClickListener(this);
+
 
         CountDownTimer timer = new CountDownTimer(180000, 1000) {
             @Override
@@ -75,7 +78,6 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     public boolean levelOneDone() {
         if(levelOne.puzzleIsCompleted()) {
             levelOneTotalClicks = levelOne.getTotalClicks();
-            Log.v("TAG", "" + levelOneTotalClicks);
             return true;
         } else {
             return false;
