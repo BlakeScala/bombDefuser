@@ -32,9 +32,12 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
     int levelOneTotalClicks;
     int levelTwoTotalClicks;
+    int levelThreeTotalClicks;
+    int finalCombination;
 
     boolean levelOneStarted = false;
     boolean levelTwoStarted = false;
+    boolean levelThreeStarted = false;
 
     FragmentTransaction transaction;
 
@@ -70,6 +73,11 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                         getSupportFragmentManager().beginTransaction().remove(levelTwo).commit();
                     }
                 }
+                if (levelThreeStarted) {
+                    if (levelThreeDone()) {
+                        getSupportFragmentManager().beginTransaction().remove(levelThree).commit();
+                    }
+                }
             }
 
             @Override
@@ -98,6 +106,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             transaction.commit();
         }
         if (v == mLevelThreeButton) {
+            levelThreeStarted = true;
             levelThree = new SwitchThreeFragment();
 
             transaction = getSupportFragmentManager().beginTransaction();
@@ -121,6 +130,16 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             levelTwoTotalClicks = levelTwo.getTotalClicks();
             mLevelTwoButton.setOnClickListener(null);
             mLevelThreeButton.setOnClickListener(this);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean levelThreeDone() {
+        if (levelThree.puzzleIsCompleted()) {
+            levelThreeTotalClicks = levelThree.getTotalClicks();
+            mLevelThreeButton.setOnClickListener(null);
             return true;
         } else {
             return false;
