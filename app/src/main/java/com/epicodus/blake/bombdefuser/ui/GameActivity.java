@@ -56,7 +56,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         transaction.add(R.id.combinationContainer, finalLevel).commit();
 
 
-        CountDownTimer timer = new CountDownTimer(180000, 1000) {
+        CountDownTimer timer = new CountDownTimer(180000, 100) {
             @Override
             public void onTick(long timeLeft) {
                 long millis = timeLeft;
@@ -64,23 +64,26 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                         java.util.concurrent.TimeUnit.MILLISECONDS.toMinutes(millis) - java.util.concurrent.TimeUnit.HOURS.toMinutes(java.util.concurrent.TimeUnit.MILLISECONDS.toHours(millis)),
                         java.util.concurrent.TimeUnit.MILLISECONDS.toSeconds(millis) - java.util.concurrent.TimeUnit.MINUTES.toSeconds(java.util.concurrent.TimeUnit.MILLISECONDS.toMinutes(millis))
                 );
-                String timeLeftString = String.valueOf((timeLeft/1000));
+                String timeLeftString = String.valueOf((timeLeft/100));
                 mClockTimerView.setText(hms);
-
 
                 if (levelOneStarted) {
                     if (levelOneDone()) {
                         getSupportFragmentManager().beginTransaction().remove(levelOne).commit();
+                        levelOneStarted = false;
                     }
                 }
                 if (levelTwoStarted) {
                     if (levelTwoDone()) {
                         getSupportFragmentManager().beginTransaction().remove(levelTwo).commit();
+                        levelTwoStarted = false;
                     }
                 }
                 if (levelThreeStarted) {
                     if (levelThreeDone()) {
                         getSupportFragmentManager().beginTransaction().remove(levelThree).commit();
+                        finalLevel.setOnClickListeners();
+                        levelThreeStarted = false;
                     }
                 }
             }
@@ -119,6 +122,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             transaction.commit();
         }
     }
+
     public boolean levelOneDone() {
         if(levelOne.puzzleIsCompleted()) {
             levelOneTotalClicks = levelOne.getTotalClicks();
@@ -129,6 +133,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             return false;
         }
     }
+
 
     public boolean levelTwoDone() {
         if (levelTwo.puzzleIsCompleted()) {

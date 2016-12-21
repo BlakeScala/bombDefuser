@@ -3,6 +3,7 @@ package com.epicodus.blake.bombdefuser.ui;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,7 +32,7 @@ public class CombinationFragment extends Fragment implements View.OnClickListene
     @Bind(R.id.clearButton) Button mClearButton;
     @Bind(R.id.combinationTextView) TextView mCombinationTextView;
 
-    private String combinationInput;
+    private String combinationInput = "";
 
 
     public CombinationFragment() {
@@ -49,6 +50,7 @@ public class CombinationFragment extends Fragment implements View.OnClickListene
     }
 
     public void onClick(View v) {
+        Log.v("TAG", "click");
         if (v == mN0) {
             combinationInput.concat("0");
         }
@@ -82,7 +84,8 @@ public class CombinationFragment extends Fragment implements View.OnClickListene
         if (v == mClearButton) {
             combinationInput = "";
         }
-
+        Log.v("TAG", "" + combinationInput);
+        mCombinationTextView.setText(combinationInput);
     }
 
     public String getCombinationInput() {
@@ -90,6 +93,7 @@ public class CombinationFragment extends Fragment implements View.OnClickListene
     }
 
     public void setOnClickListeners() {
+        Log.v("TAG", "setting click listeners");
         mN0.setOnClickListener(this);
         mN1.setOnClickListener(this);
         mN2.setOnClickListener(this);
