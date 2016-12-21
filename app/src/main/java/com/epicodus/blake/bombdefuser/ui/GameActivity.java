@@ -21,6 +21,7 @@ import butterknife.ButterKnife;
 
 public class GameActivity extends AppCompatActivity implements View.OnClickListener {
     @Bind(R.id.levelOneButton) Button mLevelOneButton;
+    @Bind(R.id.levelTwoButton) Button mLevelTwoButton;
     @Bind(R.id.clockTimerView) TextView mClockTimerView;
     @Bind(R.id.levelContainer) FrameLayout mLevelContainer;
 
@@ -54,7 +55,6 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                 if (levelOneStarted) {
                     if (levelOneDone()) {
                         getSupportFragmentManager().beginTransaction().remove(levelOne).commit();
-                        getSupportFragmentManager().beginTransaction().add(R.id.levelContainer, levelTwo).commit();
                     }
                 }
             }
@@ -76,10 +76,19 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             transaction.add(R.id.levelContainer, levelOne);
             transaction.commit();
         }
+        if (v == mLevelTwoButton) {
+            levelTwo = new SwitchTwoFragment();
+
+            transaction = getSupportFragmentManager().beginTransaction();
+            transaction.add(R.id.levelContainer, levelTwo);
+            transaction.commit();
+        }
     }
     public boolean levelOneDone() {
         if(levelOne.puzzleIsCompleted()) {
             levelOneTotalClicks = levelOne.getTotalClicks();
+            mLevelOneButton.setOnClickListener(null);
+            mLevelTwoButton.setOnClickListener(this);
             return true;
         } else {
             return false;

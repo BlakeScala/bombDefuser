@@ -107,7 +107,6 @@ public class SwitchOneFragment extends Fragment implements View.OnClickListener 
         }
         if (puzzleIsCompleted()) {
             Toast.makeText(getActivity(), "DONE with " + totalClicks + " clicks!" , Toast.LENGTH_SHORT).show();
-            Log.v("LOG", "FINISHED");
         }
     }
 
@@ -118,7 +117,7 @@ public class SwitchOneFragment extends Fragment implements View.OnClickListener 
                 counter++;
             }
         }
-        if (counter > 3) {
+        if (counter > 2) {
             return true;
         } else {
             return false;
@@ -129,7 +128,6 @@ public class SwitchOneFragment extends Fragment implements View.OnClickListener 
         int numberToSwitch = 200;
         for (int i = 0; i < numberToSwitch; i++) {
             int randomNumber = randomWithRange(0, 4);
-            Log.v("random", "" + randomNumber);
             toggleSwitch(levelOneSwitches.get(randomNumber), levelOneBlocks.get(randomNumber));
         }
     }
@@ -178,7 +176,6 @@ public class SwitchOneFragment extends Fragment implements View.OnClickListener 
     }
 
     public void bindColors(Switch clickedSwitch, ImageView block) {
-        Log.v("TAG", clickedSwitch.getCurrentColor());
         if (clickedSwitch.getCurrentColor().equals("blue")) {
             block.setBackgroundColor(Color.rgb(66, 134, 244));
         } else if (clickedSwitch.getCurrentColor().equals("red")) {
