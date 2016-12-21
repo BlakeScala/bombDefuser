@@ -27,8 +27,12 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
     SwitchOneFragment levelOne;
     SwitchTwoFragment levelTwo;
-    FragmentTransaction transaction;
+    SwitchThreeFragment levelThree;
+
     int levelOneTotalClicks;
+    int levelTwoTotalClicks;
+
+    FragmentTransaction transaction;
     boolean levelOneStarted = false;
 
     @Override
@@ -92,6 +96,13 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             return true;
         } else {
             return false;
+        }
+    }
+
+    public boolean levelTwoCompleted() {
+        if (levelTwo.puzzleIsCompleted()) {
+            levelTwoTotalClicks = levelTwo.getTotalClicks();
+            mLevelTwoButton.setOnClickListener(null);
         }
     }
 
