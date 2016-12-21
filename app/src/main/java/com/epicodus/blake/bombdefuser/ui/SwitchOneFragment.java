@@ -182,7 +182,7 @@ public class SwitchOneFragment extends Fragment implements View.OnClickListener 
         if (clickedSwitch.getCurrentColor().equals("blue")) {
             block.setBackgroundColor(Color.rgb(66, 134, 244));
         } else if (clickedSwitch.getCurrentColor().equals("red")) {
-            block.setBackgroundColor(Color.rgb(244, 98, 66));
+            block.setBackgroundColor(Color.rgb(175, 20, 3));
         }
     }
 

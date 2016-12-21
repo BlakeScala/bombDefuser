@@ -25,23 +25,23 @@ import butterknife.ButterKnife;
  * A simple {@link Fragment} subclass.
  */
 public class SwitchTwoFragment extends Fragment implements View.OnClickListener {
-    List<String> levelOneColors = Arrays.asList("blue", "red");
-    List<ImageView> levelOneBlocks;
+    List<String> levelTwoColors = Arrays.asList("blue", "red", "purple");
+    List<ImageView> levelTwoBlocks;
     @Bind(R.id.switchOne) ImageView blockOne;
     @Bind(R.id.switchTwo) ImageView blockTwo;
     @Bind(R.id.switchThree) ImageView blockThree;
     @Bind(R.id.switchFour) ImageView blockFour;
     @Bind(R.id.switchFive) ImageView blockFive;
 
-    Switch switchOne = new Switch(0, levelOneColors.get(1));
-    Switch switchTwo = new Switch(1, levelOneColors.get(0));
-    Switch switchThree = new Switch(2, levelOneColors.get(1));
-    Switch switchFour = new Switch(3, levelOneColors.get(1));
-    Switch switchFive = new Switch(4, levelOneColors.get(0));
+    Switch switchOne = new Switch(0, levelTwoColors.get(2));
+    Switch switchTwo = new Switch(1, levelTwoColors.get(1));
+    Switch switchThree = new Switch(2, levelTwoColors.get(1));
+    Switch switchFour = new Switch(3, levelTwoColors.get(2));
+    Switch switchFive = new Switch(4, levelTwoColors.get(0));
 
     private int totalClicks = 0;
 
-    List<Switch> levelOneSwitches = Arrays.asList(switchOne, switchTwo, switchThree, switchFour, switchFive);
+    List<Switch> levelTwoSwitches = Arrays.asList(switchOne, switchTwo, switchThree, switchFour, switchFive);
 
 
     public SwitchTwoFragment() {
@@ -64,7 +64,7 @@ public class SwitchTwoFragment extends Fragment implements View.OnClickListener 
 
         ButterKnife.bind(this, view);
 
-        levelOneBlocks = Arrays.asList(blockOne, blockTwo, blockThree, blockFour, blockFive);
+        levelTwoBlocks = Arrays.asList(blockOne, blockTwo, blockThree, blockFour, blockFive);
 
         blockOne.setOnClickListener(this);
         blockTwo.setOnClickListener(this);
@@ -112,8 +112,8 @@ public class SwitchTwoFragment extends Fragment implements View.OnClickListener 
 
     public boolean hasTooManyBlues() {
         int counter = 0;
-        for (int i = 0; i < levelOneSwitches.size(); i++) {
-            if (levelOneSwitches.get(i).getCurrentColor().equals("blue")) {
+        for (int i = 0; i < levelTwoSwitches.size(); i++) {
+            if (levelTwoSwitches.get(i).getCurrentColor().equals("blue")) {
                 counter++;
             }
         }
@@ -129,7 +129,7 @@ public class SwitchTwoFragment extends Fragment implements View.OnClickListener 
         for (int i = 0; i < numberToSwitch; i++) {
             int randomNumber = randomWithRange(0, 4);
             Log.v("random", "" + randomNumber);
-            toggleSwitch(levelOneSwitches.get(randomNumber), levelOneBlocks.get(randomNumber));
+            toggleSwitch(levelTwoSwitches.get(randomNumber), levelTwoBlocks.get(randomNumber));
         }
     }
 
@@ -141,13 +141,15 @@ public class SwitchTwoFragment extends Fragment implements View.OnClickListener 
 
     public void clickSwitch(Switch clickedSwitch) {
 
-        Switch switchOne = this.levelOneSwitches.get(0);
-        Switch switchTwo = this.levelOneSwitches.get(1);
-        Switch switchThree = this.levelOneSwitches.get(2);
-        Switch switchFour = this.levelOneSwitches.get(3);
-        Switch switchFive = this.levelOneSwitches.get(4);
+        Switch switchOne = this.levelTwoSwitches.get(0);
+        Switch switchTwo = this.levelTwoSwitches.get(1);
+        Switch switchThree = this.levelTwoSwitches.get(2);
+        Switch switchFour = this.levelTwoSwitches.get(3);
+        Switch switchFive = this.levelTwoSwitches.get(4);
 
         if (this.getLevel() == 1) {
+
+        } else if (this.getLevel() == 2) {
             if (clickedSwitch == switchOne) {
                 toggleSwitch(switchOne, blockOne);
             } else if (clickedSwitch == switchTwo) {
@@ -159,20 +161,22 @@ public class SwitchTwoFragment extends Fragment implements View.OnClickListener 
             } else if (clickedSwitch == switchFive) {
                 toggleSwitch(switchFive, blockFive);
             }
-        } else if (this.getLevel() == 2) {
-
         } else if (this.getLevel() == 3) {
 
         }
     }
 
     public void toggleSwitch(Switch clickedSwitch, ImageView block) {
-        if (clickedSwitch.getCurrentColor().equals("blue")) {
-            clickedSwitch.setCurrentColor("red");
-            bindColors(clickedSwitch, block);
-        } else if (clickedSwitch.getCurrentColor().equals("red")) {
-            clickedSwitch.setCurrentColor("blue");
-            bindColors(clickedSwitch, block);
+        for (int i = 0; i < levelTwoColors.size(); i++) {
+            if (clickedSwitch.getCurrentColor().equals(levelTwoColors.get(i))) {
+                if (i < 2) {
+                    clickedSwitch.setCurrentColor(levelTwoColors.get(i + 1));
+                    bindColors(clickedSwitch, block);
+                } else if (i == 2) {
+                    clickedSwitch.setCurrentColor(levelTwoColors.get(0));
+                    bindColors(clickedSwitch, block);
+                }
+            }
         }
     }
 
@@ -181,14 +185,16 @@ public class SwitchTwoFragment extends Fragment implements View.OnClickListener 
         if (clickedSwitch.getCurrentColor().equals("blue")) {
             block.setBackgroundColor(Color.rgb(66, 134, 244));
         } else if (clickedSwitch.getCurrentColor().equals("red")) {
-            block.setBackgroundColor(Color.rgb(244, 98, 66));
+            block.setBackgroundColor(Color.rgb(175, 20, 3));
+        } else if (clickedSwitch.getCurrentColor().equals("purple")) {
+            block.setBackgroundColor(Color.rgb(100, 0, 168));
         }
     }
 
     public boolean puzzleIsCompleted() {
         boolean isCompleted = true;
-        for (int i = 0; i < levelOneSwitches.size(); i++) {
-            if (!(levelOneSwitches.get(i).getCurrentColor().equals("blue"))) {
+        for (int i = 0; i < levelTwoSwitches.size(); i++) {
+            if (!(levelTwoSwitches.get(i).getCurrentColor().equals("blue"))) {
                 isCompleted = false;
             }
         }

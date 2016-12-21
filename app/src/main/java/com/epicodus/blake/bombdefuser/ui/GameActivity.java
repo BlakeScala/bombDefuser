@@ -25,6 +25,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     @Bind(R.id.levelContainer) FrameLayout mLevelContainer;
 
     SwitchOneFragment levelOne;
+    SwitchTwoFragment levelTwo;
     FragmentTransaction transaction;
     int levelOneTotalClicks;
     boolean levelOneStarted = false;
@@ -53,6 +54,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                 if (levelOneStarted) {
                     if (levelOneDone()) {
                         getSupportFragmentManager().beginTransaction().remove(levelOne).commit();
+                        getSupportFragmentManager().beginTransaction().add(R.id.levelContainer, levelTwo).commit();
                     }
                 }
             }
