@@ -8,7 +8,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Sorry, you exploded!"
+        android:text="You defused the bomb!"
         android:textColor="@color/red"
         android:textStyle="bold"
         android:textSize="40dp"
@@ -22,4 +22,5 @@
         android:layout_gravity="center_horizontal"
         android:text="Menu"
         android:id="@+id/menuButton" />
+
 </LinearLayout>

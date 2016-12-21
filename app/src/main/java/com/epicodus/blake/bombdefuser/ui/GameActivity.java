@@ -134,7 +134,13 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         if (v == mSubmitComboButton) {
             if (combinationsMatch()) {
                 Toast.makeText(getApplicationContext(), "WINNER", Toast.LENGTH_SHORT);
-                Log.v("TAG", "WINNER");
+                Intent intent = new Intent(GameActivity.this, WinnerActivity.class);
+                startActivity(intent);
+                finish();
+            } else {
+                Intent intent = new Intent(GameActivity.this, LoseGameActivity.class);
+                startActivity(intent);
+                finish();
             }
 
         }

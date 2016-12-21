@@ -12,21 +12,22 @@ import com.epicodus.blake.bombdefuser.R;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class LoseGameActivity extends AppCompatActivity implements View.OnClickListener {
+public class WinnerActivity extends AppCompatActivity implements View.OnClickListener {
     @Bind(R.id.menuButton) Button mMenuButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lose_game);
+        setContentView(R.layout.activity_winner);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+
         ButterKnife.bind(this);
         mMenuButton.setOnClickListener(this);
     }
 
     public void onClick(View v) {
         if (v == mMenuButton) {
-            Intent intent = new Intent(LoseGameActivity.this, MainActivity.class);
+            Intent intent = new Intent(WinnerActivity.this, MainActivity.class);
             startActivity(intent);
             finish();
         }
