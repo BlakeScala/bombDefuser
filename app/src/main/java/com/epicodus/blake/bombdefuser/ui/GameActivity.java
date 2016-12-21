@@ -17,6 +17,8 @@ import android.widget.Toast;
 
 import com.epicodus.blake.bombdefuser.R;
 
+import org.w3c.dom.Text;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
@@ -28,6 +30,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     @Bind(R.id.submitComboButton) Button mSubmitComboButton;
     @Bind(R.id.levelContainer) FrameLayout mLevelContainer;
     @Bind(R.id.combinationContainer) FrameLayout mCombinationContainer;
+    @Bind(R.id.passWordDisplay) TextView mPasswordDisplay;
 
     CountDownTimer timer;
 
@@ -48,6 +51,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     boolean levelOneStarted = false;
     boolean levelTwoStarted = false;
     boolean levelThreeStarted = false;
+    boolean showPassword = false;
 
     FragmentTransaction transaction;
 
@@ -64,7 +68,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         transaction.add(R.id.combinationContainer, finalLevel).commit();
 
 
-        timer = new CountDownTimer(30000, 100) {
+        timer = new CountDownTimer(180000, 100) {
             @Override
             public void onTick(long timeLeft) {
                 long millis = timeLeft;
@@ -110,28 +114,40 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
     public void onClick(View v) {
         if (v == mLevelOneButton) {
-            levelOneStarted = true;
-            levelOne = new SwitchOneFragment();
+            if (showPassword == true) {
+                mPasswordDisplay.setText(levelOneCombo);
+            } else {
+                levelOneStarted = true;
+                levelOne = new SwitchOneFragment();
 
-            transaction = getSupportFragmentManager().beginTransaction();
-            transaction.add(R.id.levelContainer, levelOne);
-            transaction.commit();
+                transaction = getSupportFragmentManager().beginTransaction();
+                transaction.add(R.id.levelContainer, levelOne);
+                transaction.commit();
+            }
         }
         if (v == mLevelTwoButton) {
-            levelTwoStarted = true;
-            levelTwo = new SwitchTwoFragment();
+            if (showPassword == true) {
+                mPasswordDisplay.setText(levelTwoCombo);
+            } else {
+                levelTwoStarted = true;
+                levelTwo = new SwitchTwoFragment();
 
-            transaction = getSupportFragmentManager().beginTransaction();
-            transaction.add(R.id.levelContainer, levelTwo);
-            transaction.commit();
+                transaction = getSupportFragmentManager().beginTransaction();
+                transaction.add(R.id.levelContainer, levelTwo);
+                transaction.commit();
+            }
         }
         if (v == mLevelThreeButton) {
-            levelThreeStarted = true;
-            levelThree = new SwitchThreeFragment();
+            if (showPassword == true) {
+                mPasswordDisplay.setText(levelThreeCombo);
+            } else {
+                levelThreeStarted = true;
+                levelThree = new SwitchThreeFragment();
 
-            transaction = getSupportFragmentManager().beginTransaction();
-            transaction.add(R.id.levelContainer, levelThree);
-            transaction.commit();
+                transaction = getSupportFragmentManager().beginTransaction();
+                transaction.add(R.id.levelContainer, levelThree);
+                transaction.commit();
+            }
         }
         if (v == mSubmitComboButton) {
             if (combinationsMatch()) {
@@ -190,6 +206,10 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
     public void startFinalLevel() {
         mSubmitComboButton.setOnClickListener(this);
+        mLevelOneButton.setOnClickListener(this);
+        mLevelTwoButton.setOnClickListener(this);
+        mLevelThreeButton.setOnClickListener(this);
+        showPassword = true;
     }
 
     public boolean combinationsMatch() {
