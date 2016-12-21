@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="450dp"
+    android:layout_height="match_parent"
+    android:layout_gravity="center">
+
+
+    <Button
+        android:layout_width="30dp"
+        android:layout_height="50dp"
+        android:text="1"
+        android:background="@color/grey"
+        android:layout_marginRight="5dp"
+        android:textStyle="bold"
+        android:textSize="18dp"
+        android:textColor="@color/white"
+        android:id="@+id/number1"
+        android:layout_alignTop="@+id/number2"
+        android:layout_toLeftOf="@+id/number2"
+        android:layout_toStartOf="@+id/number2" />
+
+    <Button
+        android:layout_width="30dp"
+        android:layout_height="50dp"
+        android:text="2"
+        android:background="@color/grey"
+        android:layout_marginRight="5dp"
+        android:textStyle="bold"
+        android:textSize="18dp"
+        android:textColor="@color/white"
+        android:id="@+id/number2"
+        android:layout_alignTop="@+id/number3"
+        android:layout_toLeftOf="@+id/number3"
+        android:layout_toStartOf="@+id/number3" />
+
+    <Button
+        android:layout_width="30dp"
+        android:layout_height="50dp"
+        android:text="3"
+        android:background="@color/grey"
+        android:layout_marginRight="5dp"
+        android:textStyle="bold"
+        android:textSize="18dp"
+        android:textColor="@color/white"
+        android:id="@+id/number3"
+        android:layout_below="@+id/combinationField"
+        android:layout_toLeftOf="@+id/number4"
+        android:layout_toStartOf="@+id/number4" />
+
+    <Button
+        android:layout_width="30dp"
+        android:layout_height="50dp"
+        android:text="4"
+        android:background="@color/grey"
+        android:layout_marginRight="5dp"
+        android:textStyle="bold"
+        android:textSize="18dp"
+        android:textColor="@color/white"
+        android:id="@+id/number4"
+        android:layout_below="@+id/combinationField"
+        android:layout_toLeftOf="@+id/number5"
+        android:layout_toStartOf="@+id/number5" />
+
+    <Button
+        android:layout_width="30dp"
+        android:layout_height="50dp"
+        android:text="5"
+        android:background="@color/grey"
+        android:layout_marginRight="5dp"
+        android:textStyle="bold"
+        android:textSize="18dp"
+        android:textColor="@color/white"
+        android:id="@+id/number5"
+        android:layout_below="@+id/combinationField"
+        android:layout_toLeftOf="@+id/number6"
+        android:layout_toStartOf="@+id/number6" />
+
+    <Button
+        android:layout_width="30dp"
+        android:layout_height="50dp"
+        android:text="6"
+        android:background="@color/grey"
+        android:textStyle="bold"
+        android:textSize="18dp"
+        android:textColor="@color/white"
+        android:id="@+id/number6"
+        android:layout_below="@+id/combinationField"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="30dp"
+        android:layout_height="50dp"
+        android:text="7"
+        android:background="@color/grey"
+        android:layout_below="@id/combinationField"
+        android:textStyle="bold"
+        android:textSize="18dp"
+        android:textColor="@color/white"
+        android:layout_toRightOf="@id/number6"
+        android:layout_marginLeft="5dp"
+        android:id="@+id/number7" />
+
+    <Button
+        android:layout_width="30dp"
+        android:layout_height="50dp"
+        android:text="8"
+        android:background="@color/grey"
+        android:layout_below="@id/combinationField"
+        android:textStyle="bold"
+        android:textSize="18dp"
+        android:textColor="@color/white"
+        android:layout_toRightOf="@id/number7"
+        android:layout_marginLeft="5dp"
+        android:id="@+id/number8" />
+
+    <Button
+        android:layout_width="30dp"
+        android:layout_height="50dp"
+        android:text="9"
+        android:background="@color/grey"
+        android:layout_below="@id/combinationField"
+        android:textStyle="bold"
+        android:textSize="18dp"
+        android:textColor="@color/white"
+        android:layout_toRightOf="@id/number8"
+        android:layout_marginLeft="5dp"
+        android:id="@+id/number9" />
+
+    <Button
+        android:layout_width="30dp"
+        android:layout_height="50dp"
+        android:text="0"
+        android:background="@color/grey"
+        android:layout_below="@id/combinationField"
+        android:textStyle="bold"
+        android:textSize="18dp"
+        android:textColor="@color/white"
+        android:layout_toRightOf="@id/number9"
+        android:layout_marginLeft="5dp"
+        android:id="@+id/number0" />
+
+    <Button
+        android:layout_width="30dp"
+        android:layout_height="50dp"
+        android:text="<"
+        android:background="@color/grey"
+        android:layout_below="@id/combinationField"
+        android:textStyle="bold"
+        android:textSize="18dp"
+        android:textColor="@color/white"
+        android:layout_toRightOf="@id/number0"
+        android:layout_marginLeft="5dp"
+        android:id="@+id/backSpace" />
+
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:background="#9bc1bd"
+        android:layout_marginBottom="10dp"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/combinationField"
+        android:layout_alignParentTop="true"/>
+</RelativeLayout>
