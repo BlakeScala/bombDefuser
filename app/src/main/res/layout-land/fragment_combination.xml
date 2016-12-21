@@ -176,4 +176,14 @@
         android:layout_alignEnd="@+id/combinationField"
         android:layout_alignLeft="@+id/combinationField"
         android:layout_alignStart="@+id/combinationField" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:background="@color/red"
+        android:id="@+id/submitComboButton"
+        android:layout_toRightOf="@id/combinationField"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="5dp"/>
 </RelativeLayout>

@@ -83,6 +83,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                     if (levelThreeDone()) {
                         getSupportFragmentManager().beginTransaction().remove(levelThree).commit();
                         finalLevel.setOnClickListeners();
+                        finalLevel.mCombinationTextView.setHint("XX XX XX");
                         levelThreeStarted = false;
                     }
                 }
