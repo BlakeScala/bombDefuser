@@ -45,6 +45,14 @@
         android:layout_below="@+id/clockTimerView"
         android:layout_centerHorizontal="true"/>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Level 3"
+        android:id="@+id/levelThreeButton"
+        android:layout_below="@+id/clockTimerView"
+        android:layout_toRightOf="@id/clockTimerView"/>
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

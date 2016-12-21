@@ -23,6 +23,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     @Bind(R.id.levelOneButton) Button mLevelOneButton;
     @Bind(R.id.levelTwoButton) Button mLevelTwoButton;
     @Bind(R.id.clockTimerView) TextView mClockTimerView;
+    @Bind(R.id.levelThreeButton) Button mLevelThreeButton;
     @Bind(R.id.levelContainer) FrameLayout mLevelContainer;
 
     SwitchOneFragment levelOne;
@@ -32,8 +33,11 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     int levelOneTotalClicks;
     int levelTwoTotalClicks;
 
-    FragmentTransaction transaction;
     boolean levelOneStarted = false;
+    boolean levelTwoStarted = false;
+
+    FragmentTransaction transaction;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +65,11 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                         getSupportFragmentManager().beginTransaction().remove(levelOne).commit();
                     }
                 }
+                if (levelTwoStarted) {
+                    if (levelTwoDone()) {
+                        getSupportFragmentManager().beginTransaction().remove(levelTwo).commit();
+                    }
+                }
             }
 
             @Override
@@ -81,10 +90,18 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             transaction.commit();
         }
         if (v == mLevelTwoButton) {
+            levelTwoStarted = true;
             levelTwo = new SwitchTwoFragment();
 
             transaction = getSupportFragmentManager().beginTransaction();
             transaction.add(R.id.levelContainer, levelTwo);
+            transaction.commit();
+        }
+        if (v == mLevelThreeButton) {
+            levelThree = new SwitchThreeFragment();
+
+            transaction = getSupportFragmentManager().beginTransaction();
+            transaction.add(R.id.levelContainer, levelThree);
             transaction.commit();
         }
     }
@@ -99,10 +116,14 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    public boolean levelTwoCompleted() {
+    public boolean levelTwoDone() {
         if (levelTwo.puzzleIsCompleted()) {
             levelTwoTotalClicks = levelTwo.getTotalClicks();
             mLevelTwoButton.setOnClickListener(null);
+            mLevelThreeButton.setOnClickListener(this);
+            return true;
+        } else {
+            return false;
         }
     }
 
