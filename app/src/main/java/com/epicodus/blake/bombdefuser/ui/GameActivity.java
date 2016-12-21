@@ -29,6 +29,8 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     @Bind(R.id.levelContainer) FrameLayout mLevelContainer;
     @Bind(R.id.combinationContainer) FrameLayout mCombinationContainer;
 
+    CountDownTimer timer;
+
     SwitchOneFragment levelOne;
     SwitchTwoFragment levelTwo;
     SwitchThreeFragment levelThree;
@@ -62,7 +64,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         transaction.add(R.id.combinationContainer, finalLevel).commit();
 
 
-        CountDownTimer timer = new CountDownTimer(180000, 100) {
+        timer = new CountDownTimer(30000, 100) {
             @Override
             public void onTick(long timeLeft) {
                 long millis = timeLeft;
@@ -134,11 +136,15 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         if (v == mSubmitComboButton) {
             if (combinationsMatch()) {
                 Toast.makeText(getApplicationContext(), "WINNER", Toast.LENGTH_SHORT);
+                timer.cancel();
+                timer = null;
                 Intent intent = new Intent(GameActivity.this, WinnerActivity.class);
                 startActivity(intent);
                 finish();
             } else {
                 Intent intent = new Intent(GameActivity.this, LoseGameActivity.class);
+                timer.cancel();
+                timer = null;
                 startActivity(intent);
                 finish();
             }
