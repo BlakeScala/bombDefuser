@@ -12,7 +12,8 @@
         android:layout_marginRight="30dp"
         android:layout_marginTop="15dp"
         android:layout_marginBottom="15dp"
-        android:background="@color/darkGrey"/>
+        android:background="@color/darkGrey"
+        android:id="@+id/imageView" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -55,11 +56,27 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="100dp"
         android:id="@+id/levelContainer"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/levelOneButton"></FrameLayout>
+        android:layout_below="@+id/levelOneButton">
 
+        <RelativeLayout
+            android:layout_width="400dp"
+            android:layout_height="70dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="13dp"
+            android:background="@color/grey"
+            android:layout_gravity="center" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="450dp"
+        android:layout_height="150dp"
+        android:id="@+id/combinationContainer"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true">
+    </FrameLayout>
 
 
 </RelativeLayout>

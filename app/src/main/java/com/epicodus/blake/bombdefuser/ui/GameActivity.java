@@ -25,10 +25,12 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     @Bind(R.id.clockTimerView) TextView mClockTimerView;
     @Bind(R.id.levelThreeButton) Button mLevelThreeButton;
     @Bind(R.id.levelContainer) FrameLayout mLevelContainer;
+    @Bind(R.id.combinationContainer) FrameLayout mCombinationContainer;
 
     SwitchOneFragment levelOne;
     SwitchTwoFragment levelTwo;
     SwitchThreeFragment levelThree;
+    CombinationFragment finalLevel;
 
     int levelOneTotalClicks;
     int levelTwoTotalClicks;
@@ -48,7 +50,10 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_game);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         ButterKnife.bind(this);
+        finalLevel = new CombinationFragment();
         mLevelOneButton.setOnClickListener(this);
+        transaction = getSupportFragmentManager().beginTransaction();
+        transaction.add(R.id.combinationContainer, finalLevel).commit();
 
 
         CountDownTimer timer = new CountDownTimer(180000, 1000) {
