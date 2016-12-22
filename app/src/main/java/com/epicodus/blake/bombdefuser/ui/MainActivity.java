@@ -16,6 +16,7 @@ import butterknife.ButterKnife;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     @Bind(R.id.startButton) Button mStartButton;
     @Bind(R.id.logOutButton) Button mLogOutButton;
+    @Bind(R.id.directionsButton) Button mDirectionsButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +27,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         mLogOutButton.setOnClickListener(this);
         mStartButton.setOnClickListener(this);
+        mDirectionsButton.setOnClickListener(this);
     }
 
     public void onClick(View v) {
@@ -34,6 +36,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         if (v == mLogOutButton) {
             logout();
+        }
+        if (v == mDirectionsButton) {
+            Intent intent = new Intent(MainActivity.this, DirectionsActivity.class);
+            startActivity(intent);
         }
     }
 

@@ -72,10 +72,10 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         transaction = getSupportFragmentManager().beginTransaction();
         transaction.add(R.id.combinationContainer, finalLevel).commit();
 
-        mLevelOneButton.setText("o");
+        mLevelOneButton.setText("1");
 
 
-        timer = new CountDownTimer(600000, 100) {
+        timer = new CountDownTimer(420000, 100) {
             @Override
             public void onTick(long timeLeft) {
                 long millis = timeLeft;
@@ -90,14 +90,14 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                 if (levelOneStarted) {
                     if (levelOneDone()) {
                         getSupportFragmentManager().beginTransaction().remove(levelOne).commit();
-                        mLevelTwoButton.setText("o");
+                        mLevelTwoButton.setText("2");
                         levelOneStarted = false;
                     }
                 }
                 if (levelTwoStarted) {
                     if (levelTwoDone()) {
                         getSupportFragmentManager().beginTransaction().remove(levelTwo).commit();
-                        mLevelThreeButton.setText("o");
+                        mLevelThreeButton.setText("3");
                         levelTwoStarted = false;
                     }
                 }

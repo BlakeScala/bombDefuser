@@ -25,7 +25,8 @@
             android:screenOrientation="landscape" />
         <activity android:name=".ui.GameActivity" />
         <activity android:name=".ui.LoseGameActivity" />
-        <activity android:name=".ui.WinnerActivity"></activity>
+        <activity android:name=".ui.WinnerActivity" />
+        <activity android:name=".ui.DirectionsActivity"></activity>
     </application>
 
 </manifest>
