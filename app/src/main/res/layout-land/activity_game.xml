@@ -30,26 +30,26 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Level 1"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:backgroundTint="@color/charcoal"
         android:id="@+id/levelOneButton"
         android:layout_below="@+id/clockTimerView"
         android:layout_toLeftOf="@+id/clockTimerView"
         android:layout_toStartOf="@+id/clockTimerView" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Level 2"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
         android:id="@+id/levelTwoButton"
+        android:backgroundTint="@color/charcoal"
         android:layout_below="@+id/clockTimerView"
         android:layout_centerHorizontal="true"/>
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Level 3"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:backgroundTint="@color/charcoal"
         android:id="@+id/levelThreeButton"
         android:layout_below="@+id/clockTimerView"
         android:layout_toRightOf="@id/clockTimerView"/>
@@ -89,9 +89,10 @@
 
         <Button
             style="?android:attr/buttonStyleSmall"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:background="@color/red"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:background="@drawable/rounded_button"
+            android:backgroundTint="@color/red"
             android:id="@+id/submitComboButton"
             android:layout_marginTop="30dp"
             android:layout_marginLeft="335dp" />
