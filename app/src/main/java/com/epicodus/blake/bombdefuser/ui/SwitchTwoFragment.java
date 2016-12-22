@@ -152,32 +152,25 @@ public class SwitchTwoFragment extends Fragment implements View.OnClickListener 
         Switch switchFour = this.levelTwoSwitches.get(3);
         Switch switchFive = this.levelTwoSwitches.get(4);
 
-
         if (clickedSwitch == switchOne) {
             toggleSwitch(switchOne, blockOne);
+            toggleSwitch(switchThree, blockThree);
+            toggleSwitch(switchFive, blockFive);
         } else if (clickedSwitch == switchTwo) {
-            toggleSwitch(switchTwo, blockTwo);
+            toggleSwitch(switchFour, blockFour);
+            toggleSwitch(switchFive, blockFive);
         } else if (clickedSwitch == switchThree) {
             toggleSwitch(switchThree, blockThree);
-        } else if (clickedSwitch == switchFour) {
             toggleSwitch(switchFour, blockFour);
+        } else if (clickedSwitch == switchFour) {
+            toggleSwitch(switchThree, blockThree);
         } else if (clickedSwitch == switchFive) {
-            toggleSwitch(switchFive, blockFive);
+            toggleSwitch(switchOne, blockOne);
+            toggleSwitch(switchTwo, blockTwo);
         }
     }
 
     public void toggleSwitch(Switch clickedSwitch, ImageView block) {
-//        for (int i = 0; i < levelTwoColors.size(); i++) {
-//            if (clickedSwitch.getCurrentColor().equals(levelTwoColors.get(i))) {
-//                if (i < 2) {
-//                    clickedSwitch.setCurrentColor(levelTwoColors.get(i + 1));
-//                    bindColors(clickedSwitch, block);
-//                } else if (i == 2) {
-//                    clickedSwitch.setCurrentColor(levelTwoColors.get(0));
-//                    bindColors(clickedSwitch, block);
-//                }
-//            }
-//        }
         if (clickedSwitch.getCurrentColor().equals("blue")) {
             clickedSwitch.setCurrentColor("red");
             bindColors(clickedSwitch, block);
