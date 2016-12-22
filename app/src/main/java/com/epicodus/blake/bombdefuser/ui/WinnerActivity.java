@@ -31,25 +31,22 @@ public class WinnerActivity extends AppCompatActivity implements View.OnClickLis
         ButterKnife.bind(this);
         mMenuButton.setOnClickListener(this);
 
-        Intent intent = getIntent();
-        Bundle extras = intent.getExtras();
-        long timeLeft = extras.getLong("timeLeft");
-        int totalClicks = extras.getInt("totalClicks");
-
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        String uid = user.getUid();
-        String userName = user.getEmail();
-        HighScore leaderboardEntry = new HighScore(userName, timeLeft, totalClicks);
-
-        mScoreReference = FirebaseDatabase
-                .getInstance()
-                .getReference(Constants.FIREBASE_CHILD_SCORES)
-                .child(uid);
-
-        DatabaseReference pushRef = mScoreReference.push();
-        String pushId = pushRef.getKey();
-        leaderboardEntry.setPushId(pushId);
-        pushRef.setValue(leaderboardEntry);
+//        Intent intent = getIntent();
+//
+//        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+//        String uid = user.getUid();
+//        String userName = user.getEmail();
+//        HighScore leaderboardEntry = new HighScore(userName, timeLeft, totalClicks);
+//
+//        mScoreReference = FirebaseDatabase
+//                .getInstance()
+//                .getReference(Constants.FIREBASE_CHILD_SCORES)
+//                .child(uid);
+//
+//        DatabaseReference pushRef = mScoreReference.push();
+//        String pushId = pushRef.getKey();
+//        leaderboardEntry.setPushId(pushId);
+//        pushRef.setValue(leaderboardEntry);
     }
 
     public void onClick(View v) {

@@ -71,7 +71,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         transaction = getSupportFragmentManager().beginTransaction();
         transaction.add(R.id.combinationContainer, finalLevel).commit();
 
-        mLevelOneButton.setBackgroundColor(Color.rgb(33, 221, 133));
+        mLevelOneButton.setText("o");
 
 
         timer = new CountDownTimer(180000, 100) {
@@ -89,12 +89,14 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                 if (levelOneStarted) {
                     if (levelOneDone()) {
                         getSupportFragmentManager().beginTransaction().remove(levelOne).commit();
+                        mLevelTwoButton.setText("o");
                         levelOneStarted = false;
                     }
                 }
                 if (levelTwoStarted) {
                     if (levelTwoDone()) {
                         getSupportFragmentManager().beginTransaction().remove(levelTwo).commit();
+                        mLevelThreeButton.setText("o");
                         levelTwoStarted = false;
                     }
                 }
@@ -137,7 +139,6 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                 mPasswordDisplay.setText(levelTwoCombo);
             } else {
                 levelTwoStarted = true;
-                mLevelTwoButton.setBackgroundColor(Color.rgb(33, 221, 133));
                 levelTwo = new SwitchTwoFragment();
 
                 transaction = getSupportFragmentManager().beginTransaction();
@@ -150,7 +151,6 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                 mPasswordDisplay.setText(levelThreeCombo);
             } else {
                 levelThreeStarted = true;
-                mLevelThreeButton.setBackgroundColor(Color.rgb(33, 221, 133));
                 levelThree = new SwitchThreeFragment();
 
                 transaction = getSupportFragmentManager().beginTransaction();
@@ -160,13 +160,12 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         }
         if (v == mSubmitComboButton) {
             if (combinationsMatch()) {
-                Intent intent = new Intent(GameActivity.this, WinnerActivity.class);
                 Bundle extras = new Bundle();
-                extras.putLong("timeLeft", timeLeftonClock);
+                String timeInMilliseconds = String.valueOf(timeLeftonClock);
+                extras.putString("timeLeft", timeInMilliseconds);
                 extras.putLong("totalClicks", totalGameClicks);
+                Intent intent = new Intent(GameActivity.this, WinnerActivity.class);
                 startActivity(intent);
-                timer.cancel();
-                timer = null;
                 finish();
             } else {
                 Intent intent = new Intent(GameActivity.this, LoseGameActivity.class);

@@ -34,6 +34,7 @@
         android:layout_height="45dp"
         android:backgroundTint="@color/charcoal"
         android:id="@+id/levelOneButton"
+        android:textColor="@color/red"
         android:layout_below="@+id/clockTimerView"
         android:layout_toLeftOf="@+id/clockTimerView"
         android:layout_toStartOf="@+id/clockTimerView" />
@@ -42,6 +43,7 @@
         android:layout_width="45dp"
         android:layout_height="45dp"
         android:id="@+id/levelTwoButton"
+        android:textColor="@color/red"
         android:backgroundTint="@color/charcoal"
         android:layout_below="@+id/clockTimerView"
         android:layout_centerHorizontal="true"/>
@@ -50,6 +52,7 @@
         android:layout_width="45dp"
         android:layout_height="45dp"
         android:backgroundTint="@color/charcoal"
+        android:textColor="@color/red"
         android:id="@+id/levelThreeButton"
         android:layout_below="@+id/clockTimerView"
         android:layout_toRightOf="@id/clockTimerView"/>

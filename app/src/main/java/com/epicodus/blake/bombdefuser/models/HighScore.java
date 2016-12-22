@@ -6,18 +6,18 @@ package com.epicodus.blake.bombdefuser.models;
 
 public class HighScore {
     String username;
-    long timeLeft;
+    String timeLeft;
     int totalClicks;
     String pushId;
 
     public HighScore() {}
 
-    public HighScore(String username, long timeLeft, int totalClicks) {
+    public HighScore(String username, String timeLeft, int totalClicks) {
         this.timeLeft = timeLeft;
         this.totalClicks = totalClicks;
     }
 
-    public long getTimeLeft() {
+    public String getTimeLeft() {
         return timeLeft;
     }
 

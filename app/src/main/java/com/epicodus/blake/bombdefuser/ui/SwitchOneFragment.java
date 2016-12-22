@@ -154,15 +154,18 @@ public class SwitchOneFragment extends Fragment implements View.OnClickListener 
 
         if (this.getLevel() == 1) {
             if (clickedSwitch == switchOne) {
-                toggleSwitch(switchOne, blockOne);
-            } else if (clickedSwitch == switchTwo) {
-                toggleSwitch(switchTwo, blockTwo);
-            } else if (clickedSwitch == switchThree) {
                 toggleSwitch(switchThree, blockThree);
-            } else if (clickedSwitch == switchFour) {
                 toggleSwitch(switchFour, blockFour);
-            } else if (clickedSwitch == switchFive) {
+            } else if (clickedSwitch == switchTwo) {
+                toggleSwitch(switchOne, blockOne);
+                toggleSwitch(switchThree, blockThree);
+            } else if (clickedSwitch == switchThree) {
                 toggleSwitch(switchFive, blockFive);
+            } else if (clickedSwitch == switchFour) {
+                toggleSwitch(switchOne, blockOne);
+                toggleSwitch(switchTwo, blockTwo);
+            } else if (clickedSwitch == switchFive) {
+                toggleSwitch(switchTwo, blockTwo);
             }
         } else if (this.getLevel() == 2) {
 
