@@ -114,6 +114,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
             @Override
             public void onFinish() {
+                Log.v("TAG", "timer finished!");
                 Intent intent = new Intent(GameActivity.this, LoseGameActivity.class);
                 startActivity(intent);
                 finish();
@@ -160,8 +161,11 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             }
         }
         if (v == mSubmitComboButton) {
+            Log.v("TAG", "running submit Combo");
             if (combinationsMatch()) {
                 Intent intent = new Intent(GameActivity.this, WinnerActivity.class);
+                timer.cancel();
+                timer = null;
                 startActivity(intent);
                 finish();
             } else {
