@@ -25,8 +25,7 @@ import butterknife.ButterKnife;
 
 public class CreateAccountActivity extends AppCompatActivity implements View.OnClickListener {
     @Bind(R.id.signUpButton) Button mSignUpButton;
-    @Bind(R.id.nameEditText) EditText mNameEditText;
-    @Bind(R.id.emailEditText) EditText mEmailEditText;
+    @Bind(R.id.userNameEditText) EditText mUsernameEditText;
     @Bind(R.id.passwordEditText) EditText mPasswordEditText;
     @Bind(R.id.confirmPasswordEditText) EditText mConfirmPasswordEditText;
     @Bind(R.id.signInTextView) TextView mSignInTextView;
@@ -73,15 +72,14 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
     }
 
     private void createNewUser() {
-        final String name = mNameEditText.getText().toString().trim();
-        final String email = mEmailEditText.getText().toString().trim();
+        final String userName = mUsernameEditText.getText().toString().trim();
+        final String email = userName + "@bombdefuserapp.com";
         String password = mPasswordEditText.getText().toString().trim();
         String confirmPassword = mConfirmPasswordEditText.getText().toString().trim();
 
         boolean validEmail = isValidEmail(email);
-        boolean validName = isValidName(name);
         boolean validPassword = isValidPassword(password, confirmPassword);
-        if (!validEmail || !validName || !validPassword) return;
+        if (!validEmail || !validPassword) return;
 
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -130,18 +128,10 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
         boolean isGoodEmail =
                 (email != null && android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches());
         if (!isGoodEmail) {
-            mEmailEditText.setError("Please enter a valid email address");
+            mUsernameEditText.setError("Username may only contain letters and numbers");
             return false;
         }
         return isGoodEmail;
-    }
-
-    private boolean isValidName(String name) {
-        if (name.equals("")) {
-            mNameEditText.setError("Please enter your name");
-            return false;
-        }
-        return true;
     }
 
     private boolean isValidPassword(String password, String confirmPassword) {
