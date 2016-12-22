@@ -20,6 +20,12 @@
         android:layout_height="wrap_content"
         android:text="Log Out"
         android:id="@+id/logOutButton"
+        android:textStyle="bold"
+        android:textColor="@color/red"
+        android:textSize="30dp"
+        android:padding="15dp"
+        android:outlineProvider="bounds"
+
         android:layout_below="@+id/startButton"
         android:layout_centerHorizontal="true" />
 
@@ -28,6 +34,11 @@
         android:layout_height="wrap_content"
         android:text="Start Game"
         android:id="@+id/startButton"
+        android:textStyle="bold"
+        android:textColor="@color/red"
+        android:textSize="30dp"
+        android:padding="15dp"
+        android:outlineProvider="bounds"
         android:layout_below="@+id/mainTitle"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="24dp" />

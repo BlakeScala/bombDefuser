@@ -161,10 +161,6 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         }
         if (v == mSubmitComboButton) {
             if (combinationsMatch()) {
-                Bundle extras = new Bundle();
-                String timeInMilliseconds = String.valueOf(timeLeftonClock);
-                extras.putString("timeLeft", timeInMilliseconds);
-                extras.putLong("totalClicks", totalGameClicks);
                 Intent intent = new Intent(GameActivity.this, WinnerActivity.class);
                 startActivity(intent);
                 finish();

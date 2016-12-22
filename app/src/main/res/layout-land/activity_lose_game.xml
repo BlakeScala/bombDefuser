@@ -21,5 +21,10 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:text="Menu"
+        android:textStyle="bold"
+        android:textColor="@color/red"
+        android:textSize="30dp"
+        android:padding="15dp"
+        android:outlineProvider="bounds"
         android:id="@+id/menuButton" />
 </LinearLayout>
