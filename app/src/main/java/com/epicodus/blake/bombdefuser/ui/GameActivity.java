@@ -50,6 +50,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     String levelTwoCombo;
     String levelThreeCombo;
     String finalCombination;
+    String combinationEntry;
 
     boolean levelOneStarted = false;
     boolean levelTwoStarted = false;
@@ -74,7 +75,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         mLevelOneButton.setText("o");
 
 
-        timer = new CountDownTimer(180000, 100) {
+        timer = new CountDownTimer(600000, 100) {
             @Override
             public void onTick(long timeLeft) {
                 long millis = timeLeft;
@@ -168,11 +169,13 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
                 finish();
             } else {
-                Intent intent = new Intent(GameActivity.this, LoseGameActivity.class);
-                timer.cancel();
-                timer = null;
-                startActivity(intent);
-                finish();
+                if (!(combinationEntry.equals(""))){
+                    Intent intent = new Intent(GameActivity.this, LoseGameActivity.class);
+                    timer.cancel();
+                    timer = null;
+                    startActivity(intent);
+                    finish();
+                }
             }
 
         }
@@ -224,7 +227,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
     public boolean combinationsMatch() {
         finalCombination = levelOneCombo + levelTwoCombo + levelThreeCombo;
-        String combinationEntry = finalLevel.getCombinationInput();
+        combinationEntry = finalLevel.getCombinationInput();
         Log.v("TAG", "Combo: " + finalCombination);
         Log.v("TAG", "Combo Input: " + combinationEntry);
         if (finalCombination.equals(combinationEntry)) {
