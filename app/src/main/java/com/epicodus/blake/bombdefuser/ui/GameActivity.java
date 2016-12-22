@@ -42,6 +42,8 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     int levelOneTotalClicks;
     int levelTwoTotalClicks;
     int levelThreeTotalClicks;
+    int totalGameClicks = levelOneTotalClicks + levelTwoTotalClicks + levelThreeTotalClicks;
+    long timeLeftonClock;
 
     String levelOneCombo;
     String levelTwoCombo;
@@ -52,6 +54,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     boolean levelTwoStarted = false;
     boolean levelThreeStarted = false;
     boolean showPassword = false;
+
 
     FragmentTransaction transaction;
 
@@ -72,6 +75,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onTick(long timeLeft) {
                 long millis = timeLeft;
+                timeLeftonClock = millis;
                 String hms = String.format("%02d:%02d",
                         java.util.concurrent.TimeUnit.MILLISECONDS.toMinutes(millis) - java.util.concurrent.TimeUnit.HOURS.toMinutes(java.util.concurrent.TimeUnit.MILLISECONDS.toHours(millis)),
                         java.util.concurrent.TimeUnit.MILLISECONDS.toSeconds(millis) - java.util.concurrent.TimeUnit.MINUTES.toSeconds(java.util.concurrent.TimeUnit.MILLISECONDS.toMinutes(millis))
@@ -151,11 +155,13 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         }
         if (v == mSubmitComboButton) {
             if (combinationsMatch()) {
-                Toast.makeText(getApplicationContext(), "WINNER", Toast.LENGTH_SHORT);
+                Intent intent = new Intent(GameActivity.this, WinnerActivity.class);
+                Bundle extras = new Bundle();
+                extras.putLong("timeLeft", timeLeftonClock);
+                extras.putLong("totalClicks", totalGameClicks);
+                startActivity(intent);
                 timer.cancel();
                 timer = null;
-                Intent intent = new Intent(GameActivity.this, WinnerActivity.class);
-                startActivity(intent);
                 finish();
             } else {
                 Intent intent = new Intent(GameActivity.this, LoseGameActivity.class);

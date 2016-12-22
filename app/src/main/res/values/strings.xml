@@ -3,4 +3,7 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <!--http://stackoverflow.com/questions/16203378/how-to-store-countdown-timer-value-in-a-variable-->
 </resources>
