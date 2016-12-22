@@ -75,7 +75,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         mLevelOneButton.setText("1");
 
 
-        timer = new CountDownTimer(420000, 100) {
+        timer = new CountDownTimer(300000, 100) {
             @Override
             public void onTick(long timeLeft) {
                 long millis = timeLeft;
