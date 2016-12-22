@@ -222,6 +222,12 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         mLevelOneButton.setOnClickListener(this);
         mLevelTwoButton.setOnClickListener(this);
         mLevelThreeButton.setOnClickListener(this);
+        mLevelOneButton.setText("?");
+        mLevelTwoButton.setText("?");
+        mLevelThreeButton.setText("?");
+        mLevelOneButton.setTextColor(Color.GREEN);
+        mLevelTwoButton.setTextColor(Color.GREEN);
+        mLevelThreeButton.setTextColor(Color.GREEN);
         showPassword = true;
     }
 

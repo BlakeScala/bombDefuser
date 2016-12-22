@@ -111,9 +111,6 @@ public class SwitchOneFragment extends Fragment implements View.OnClickListener 
         if (v == blockFive) {
             clickSwitch(switchFive);
         }
-        if (puzzleIsCompleted()) {
-            Toast.makeText(getActivity(), "DONE with " + totalClicks + " clicks!" , Toast.LENGTH_SHORT).show();
-        }
     }
 
     public boolean hasTooManyBlues() {
