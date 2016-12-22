@@ -2,6 +2,7 @@ package com.epicodus.blake.bombdefuser.ui;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.graphics.Color;
 import android.os.CountDownTimer;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -70,6 +71,8 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         transaction = getSupportFragmentManager().beginTransaction();
         transaction.add(R.id.combinationContainer, finalLevel).commit();
 
+        mLevelOneButton.setBackgroundColor(Color.rgb(33, 221, 133));
+
 
         timer = new CountDownTimer(180000, 100) {
             @Override
@@ -134,6 +137,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                 mPasswordDisplay.setText(levelTwoCombo);
             } else {
                 levelTwoStarted = true;
+                mLevelTwoButton.setBackgroundColor(Color.rgb(33, 221, 133));
                 levelTwo = new SwitchTwoFragment();
 
                 transaction = getSupportFragmentManager().beginTransaction();
@@ -146,6 +150,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                 mPasswordDisplay.setText(levelThreeCombo);
             } else {
                 levelThreeStarted = true;
+                mLevelThreeButton.setBackgroundColor(Color.rgb(33, 221, 133));
                 levelThree = new SwitchThreeFragment();
 
                 transaction = getSupportFragmentManager().beginTransaction();
