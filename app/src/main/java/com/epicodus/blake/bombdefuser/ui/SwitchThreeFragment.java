@@ -153,30 +153,24 @@ public class SwitchThreeFragment extends Fragment implements View.OnClickListene
 
 
         if (clickedSwitch == switchOne) {
-            toggleSwitch(switchOne, blockOne);
+            toggleSwitch(switchThree, blockThree);
+            toggleSwitch(switchFour, blockFour);
+            toggleSwitch(switchFive, blockFive);
         } else if (clickedSwitch == switchTwo) {
             toggleSwitch(switchTwo, blockTwo);
+            toggleSwitch(switchFour, blockFour);
         } else if (clickedSwitch == switchThree) {
             toggleSwitch(switchThree, blockThree);
-        } else if (clickedSwitch == switchFour) {
-            toggleSwitch(switchFour, blockFour);
-        } else if (clickedSwitch == switchFive) {
             toggleSwitch(switchFive, blockFive);
+        } else if (clickedSwitch == switchFour) {
+            toggleSwitch(switchOne, blockOne);
+        } else if (clickedSwitch == switchFive) {
+            toggleSwitch(switchOne, blockOne);
+            toggleSwitch(switchThree, blockThree);
         }
     }
 
     public void toggleSwitch(Switch clickedSwitch, ImageView block) {
-//        for (int i = 0; i < levelThreeColors.size(); i++) {
-//            if (clickedSwitch.getCurrentColor().equals(levelThreeColors.get(i))) {
-//                if (i < 2) {
-//                    clickedSwitch.setCurrentColor(levelThreeColors.get(i + 1));
-//                    bindColors(clickedSwitch, block);
-//                } else if (i == 2) {
-//                    clickedSwitch.setCurrentColor(levelThreeColors.get(0));
-//                    bindColors(clickedSwitch, block);
-//                }
-//            }
-//        }
         if (clickedSwitch.getCurrentColor().equals("blue")) {
             clickedSwitch.setCurrentColor("red");
             bindColors(clickedSwitch, block);
